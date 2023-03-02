@@ -3,6 +3,9 @@ import { Box } from '@mui/material';
 import { StyledItemCard } from './ItemCard.style';
 import { IProductsObject } from '../../../app/api/shop.types';
 import { OrderBuyButton } from '../OrderBuyButton/OrderBuyButton';
+import DeleteIcon from '@mui/icons-material/Delete';
+import { useDispatch } from 'react-redux';
+import { removeFromCart } from '../../../app/Slices/cartSlice';
 
 interface IItemCardProps {
   item: IProductsObject
@@ -11,8 +14,23 @@ interface IItemCardProps {
 
 export const ItemCard: React.FC<IItemCardProps> = ({ item, role }) => {
 
+  const dispatch = useDispatch();
+  // const myStorage = window.localStorage;
+
+  const handleDeleteItem = () => {
+    // myStorage.removeItem(item.title);
+    dispatch(removeFromCart(item.id));
+  };
+
   return (
     <StyledItemCard>
+      {
+        role === 'cart'
+        &&
+        <Box component='div' className='item-delete' onClick={handleDeleteItem}>
+          <Box><DeleteIcon/></Box>
+        </Box>
+      }
       <Box component='div' className='item-img'>
         <img src={ item.image } alt={ item.title } width='99%'/>
       </Box>
@@ -27,7 +45,7 @@ export const ItemCard: React.FC<IItemCardProps> = ({ item, role }) => {
         </Box>
       </Box>
       <Box sx={{width: '100%'}}>
-        <OrderBuyButton role={role}/>
+        <OrderBuyButton role={role} item={item}/>
       </Box>
     </StyledItemCard>
   );

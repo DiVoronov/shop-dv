@@ -20,6 +20,18 @@ max-height: 600px;
 overflow: hidden;
 box-sizing: border-box;
 flex-wrap: nowrap;
+animation: appear .2s ease-out;
+
+& .item-delete {
+    position: relative;
+    width: 24%;
+    cursor: pointer;
+    & > div {
+        position: absolute;
+        top: 5px;
+        right: -150%;
+    }
+}
 
 &:hover {
     transform: scale(1.04);
@@ -85,5 +97,14 @@ flex-wrap: nowrap;
 
 @media screen and (min-width: 1100px) {
     width: 25%;
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
 `;

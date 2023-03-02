@@ -16,6 +16,7 @@ import { MenuComponent, menuId } from "./NestedComponents/Menu/Menu";
 import { MobileMenu, mobileMenuId } from "./NestedComponents/Menu/MobileMenu";
 import { MobileNavList } from "./NestedComponents/Menu/MobileNavList";
 import { setAnchorEl, setMobileMoreAnchorEl, setMobileNavListAnchorEl, IOpenCloseAnchors } from "../../app/Slices/openCloseSlice";
+import { NavLink } from "react-router-dom";
 
 /*
  ***       <Logo/> 
@@ -31,6 +32,13 @@ export interface IAnchorEl {
 };
 
 export function Navbar() {
+
+  const myStorage = window.localStorage;
+  const storageCart= myStorage.getItem('initialState');
+  const parseCart = storageCart && JSON.parse(storageCart);
+  //storageCartLength
+
+  const cart = useSelector( (state: RootState) => state.cart );
 
   const dispatch = useDispatch();
 
@@ -88,8 +96,8 @@ export function Navbar() {
               aria-label="show 17 new notifications"
               color="inherit"
             >
-              <Badge badgeContent={14} color="error">
-                <ShoppingCartIcon />
+              <Badge badgeContent={parseCart.length} color="error">
+                <NavLink to='/cart'><ShoppingCartIcon /></NavLink>
               </Badge>
             </IconButton>
             <IconButton
