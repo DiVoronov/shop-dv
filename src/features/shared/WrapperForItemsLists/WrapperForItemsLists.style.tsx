@@ -50,7 +50,7 @@ min-height: 100vh;
 
 
 
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 800px) {
   flex-direction: column;
   &  .sort-filter-menu-box {
     border-right: none;

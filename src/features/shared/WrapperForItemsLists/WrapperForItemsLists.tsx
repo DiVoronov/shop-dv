@@ -5,14 +5,16 @@ import { ItemCard } from '../ItemCard/ItemCard';
 import { IProductsObject } from '../../../app/api/shop.types';
 import { RadioPanel } from './RadioPanel';
 import { CheckboxPanel } from './CheckBox';
+import { OrderBuyButton } from '../OrderBuyButton/OrderBuyButton';
 
 interface IWrapperForItemsListsProps {
   itemsList: IProductsObject[]
   categories?: any[]
   sortPoints?: any[]
+  role: 'shop' | 'cart'
 };
 
-export const WrapperForItemsLists: React.FC<IWrapperForItemsListsProps> = ({ itemsList, categories, sortPoints }) => {
+export const WrapperForItemsLists: React.FC<IWrapperForItemsListsProps> = ({ itemsList, categories, sortPoints, role }) => {
 
   const [ itemsListForRendering, setItemsListForRendering ] = useState(itemsList);
   const [ categoriesList, setCategoriesList ] = useState<string[]>(['Show all']);
@@ -268,7 +270,7 @@ export const WrapperForItemsLists: React.FC<IWrapperForItemsListsProps> = ({ ite
           {
             temporaryListOfItems.map( (item, index) => {
               return (
-                <ItemCard key={index} item={item}/>
+                <ItemCard key={index} item={item} role={role}/>
               );
             })
           }
@@ -278,13 +280,14 @@ export const WrapperForItemsLists: React.FC<IWrapperForItemsListsProps> = ({ ite
           {
             itemsListForRendering.map( (item, index) => {
               return (
-                <ItemCard key={index} item={item}/>
+                <ItemCard key={index} item={item} role={role}/>
               );
             })
           }
           </>
         }
       </Box>
+      
     </StyledWrapperForItemsLists>
   );
 };

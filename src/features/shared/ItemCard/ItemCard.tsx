@@ -2,12 +2,14 @@ import React from 'react';
 import { Box } from '@mui/material';
 import { StyledItemCard } from './ItemCard.style';
 import { IProductsObject } from '../../../app/api/shop.types';
+import { OrderBuyButton } from '../OrderBuyButton/OrderBuyButton';
 
 interface IItemCardProps {
   item: IProductsObject
+  role: 'shop' | 'cart'
 };
 
-export const ItemCard: React.FC<IItemCardProps> = ({ item }) => {
+export const ItemCard: React.FC<IItemCardProps> = ({ item, role }) => {
 
   return (
     <StyledItemCard>
@@ -23,6 +25,9 @@ export const ItemCard: React.FC<IItemCardProps> = ({ item }) => {
         <Box component='div' className='item-number-id'>
           Артикул: { item.id }
         </Box>
+      </Box>
+      <Box sx={{width: '100%'}}>
+        <OrderBuyButton role={role}/>
       </Box>
     </StyledItemCard>
   );

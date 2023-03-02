@@ -38,7 +38,7 @@ export const ItemsListAll = () => {
       component="div"
       sx={{width: "100%", minHeight: "80vh", background: '#f0f0f0'}}
     >
-      <WrapperForItemsLists itemsList={allItems}/>
+      <WrapperForItemsLists itemsList={allItems} role="shop"/>
 
     </Box>
   );

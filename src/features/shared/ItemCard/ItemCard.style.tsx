@@ -12,7 +12,7 @@ align-items: center;
 gap: .5rem;
 width: 40%;
 flex-wrap: wrap;
-border: 2px solid #5f5f5f;
+border: 2px solid #5f5f5f2e;
 border-radius: 10px;
 box-shadow: 1px 1px 10px #888;
 transition: transform .1s ease-in-out;
