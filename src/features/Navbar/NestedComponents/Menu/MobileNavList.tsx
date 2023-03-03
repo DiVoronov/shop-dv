@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Menu from "@mui/material/Menu";
 import { ListNavigation } from "../ListNavigation";
@@ -11,12 +11,7 @@ export const mobileNavListId = "primary-search-account-menu";
 export const MobileNavList = ( { anchorEl }: IAnchorEl ) => {
 
   const anchors: IOpenCloseAnchors = useSelector( (state: RootState) => state.openClose);
-  // const isMobileNavListOpen = Boolean(anchors.mobileNavListAnchorEl);
   const dispatch = useDispatch();
-
-  // const handleMobileNavListOpen = (event: React.MouseEvent<HTMLElement>) => {
-  //   setMobileNavListAnchorEl(event.currentTarget);
-  // };
 
   const handleMobileNavListClose = () => {
     dispatch(setMobileNavListAnchorEl(false));

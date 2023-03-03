@@ -1,11 +1,6 @@
 import React, { useState } from 'react';
 import { Box } from '@mui/material';
 import { StyledInputsLoginRegistration } from './InputsLoginRegistration.style';
-import { IProductsObject } from '../../../app/api/shop.types';
-import { OrderBuyButton } from '../OrderBuyButton/OrderBuyButton';
-import DeleteIcon from '@mui/icons-material/Delete';
-import { useDispatch, useSelector } from 'react-redux';
-import { removeFromCart } from '../../../app/Slices/cartSlice';
 
 import TextField from '@mui/material/TextField';
 import OutlinedInput from '@mui/material/OutlinedInput';

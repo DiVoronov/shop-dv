@@ -15,10 +15,8 @@ interface IItemCardProps {
 export const ItemCard: React.FC<IItemCardProps> = ({ item, role }) => {
 
   const dispatch = useDispatch();
-  // const myStorage = window.localStorage;
 
   const handleDeleteItem = () => {
-    // myStorage.removeItem(item.title);
     dispatch(removeFromCart(item.id));
   };
 

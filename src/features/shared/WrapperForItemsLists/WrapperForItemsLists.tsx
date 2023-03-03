@@ -5,7 +5,6 @@ import { ItemCard } from '../ItemCard/ItemCard';
 import { IProductsObject } from '../../../app/api/shop.types';
 import { RadioPanel } from './RadioPanel';
 import { CheckboxPanel } from './CheckBox';
-import { OrderBuyButton } from '../OrderBuyButton/OrderBuyButton';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../../../app/store';
 import { setOpenCloseFiltersStatus } from '../../../app/Slices/openCloseFiltersSlice';
@@ -24,7 +23,6 @@ export const WrapperForItemsLists: React.FC<IWrapperForItemsListsProps> = ({ ite
 
   const [ itemsListForRendering, setItemsListForRendering ] = useState(itemsList);
   const [ categoriesList, setCategoriesList ] = useState<string[]>(['Show all']);
-  const [ listOfChosenCategories, setListOfChosenCategories ] = useState<string[]>([]);
   const [ temporaryListOfItems, setTemporaryListOfItems ] = useState<IProductsObject[]>([]);
   const [ isShowAll, setIsShowAll ] = useState(true);
 
@@ -44,39 +42,12 @@ export const WrapperForItemsLists: React.FC<IWrapperForItemsListsProps> = ({ ite
 
   }, [itemsList]);
 
-  useEffect( () => {
-    setListOfChosenCategories(categoriesList);
-  }, [categoriesList]);
-
-  const clothing = itemsList.filter( (element: IProductsObject) => element.category === "men's clothing" || element.category === "women's clothing");
-  const mansClothes = itemsList.filter( (element: IProductsObject) => element.category === "men's clothing");
-  const womansClothes = itemsList.filter( (element: IProductsObject) => element.category === "women's clothing");
-  const electronics = itemsList.filter( (element: IProductsObject) => element.category === "electronics");
-  const jewelry = itemsList.filter( (element: IProductsObject) => element.category === "jewelery");
-
-
-  // const handleAddRemoveClothes = (e: React.MouseEvent<HTMLInputElement | HTMLButtonElement>) => {
-  //   if (!e.currentTarget.checked) {
-  //     setItemsListForRendering(itemsList.filter( item => (item.category !==  "men's clothing") && (item.category !== "women's clothing")));
-  //   } else {
-  //     setItemsListForRendering(itemsListForRendering.concat(...clothing));
-  //   };
-  // };
   const handleAddRemoveAllItems = (e: React.MouseEvent<HTMLInputElement | HTMLButtonElement>) => {
-    // console.log(e.currentTarget.classList)
-    // console.log(e.currentTarget.checked)
-    // console.log(e.currentTarget.checked)
-    // console.log(e.currentTarget.classList.contains('Mui-checked'))
 
-    // itemsList
     if (!e.currentTarget.classList.contains('Mui-checked')) {
       setIsShowAll(true);
-      // console.log('itemsListForRendering', itemsListForRendering)
-      // setTemporaryListOfItems(itemsListForRendering);
-      // setItemsListForRendering(itemsList);
     } else {
       setIsShowAll(false);
-      // setItemsListForRendering(temporaryListOfItems);
     };
   };
 
@@ -155,7 +126,6 @@ export const WrapperForItemsLists: React.FC<IWrapperForItemsListsProps> = ({ ite
   };
 
   const handleSort = (e: React.MouseEvent<HTMLInputElement | HTMLButtonElement>, radioOptions: string) => {
-    // if (!e.currentTarget.classList.contains('Mui-checked')) {
     const itemsListForRenderingCopy = [...itemsListForRendering];
     const temporaryListOfItemsCopy = [...temporaryListOfItems];
 
@@ -181,53 +151,6 @@ export const WrapperForItemsLists: React.FC<IWrapperForItemsListsProps> = ({ ite
       setItemsListForRendering(arrayArticleSort);
       setTemporaryListOfItems(arrayArticleSortTEMP);
     };
-    /*
-    console.log('handleSort', radioOptions, itemsListForRendering)
-    switch (radioOptions) {
-      case 'Від меншої ціни':
-        const copyArrayPriceIncrease = itemsListForRendering.sort(sortByPriceIncrease);
-        // const copyArrayPriceIncreaseTemp = temporaryListOfItems.sort(sortByPriceIncrease);
-
-        const tempInc = itemsListForRendering;
-        const getTempInc = tempInc.sort((a, b) => {
-          if (a.price > b.price) { return 1 } else
-          if (a.price < b.price) { return -1 } else return 0;
-        })
-        setItemsListForRendering(getTempInc);
-        // setItemsListForRendering(copyArrayPriceIncrease);
-        // setTemporaryListOfItems(copyArrayPriceIncreaseTemp);
-        break;
-      case 'Від більшої ціни':
-        const copyArrayPriceDecrease = itemsListForRendering.sort(sortByPriceDecrease);
-        // const copyArrayPriceDecreaseTemp = temporaryListOfItems.sort(sortByPriceDecrease);
-        
-        const tempDec = itemsListForRendering;
-        const getTempDec = tempDec.sort((a, b) => {
-          if (a.price < b.price) { return 1 } else
-          if (a.price > b.price) { return -1 } else return 0;
-        })
-        setItemsListForRendering(getTempDec);
-
-        // setItemsListForRendering(copyArrayPriceDecrease);
-        // setTemporaryListOfItems(copyArrayPriceDecreaseTemp);
-        break;
-      case 'За популярністю':
-        const copyArrayPopular = itemsListForRendering.sort(sortByPopular);
-        const copyArrayPopularTemp = temporaryListOfItems.sort(sortByPopular);
-
-        setItemsListForRendering(copyArrayPopular);
-        setTemporaryListOfItems(copyArrayPopularTemp);
-        break;
-      case 'За номером':
-        const copyArrayArticle = itemsListForRendering.sort(sortByArticle);
-        const copyArrayArticleTemp = temporaryListOfItems.sort(sortByArticle);
-
-        setItemsListForRendering(copyArrayArticle);
-        setTemporaryListOfItems(copyArrayArticleTemp);
-        break;
-    };
-  // };
-  */
   };
 
   const dispatch = useDispatch();
@@ -248,38 +171,11 @@ export const WrapperForItemsLists: React.FC<IWrapperForItemsListsProps> = ({ ite
           <>
         <Box component='div' className='sort-menu-box'>
 
-          {/* <Box component='div' className='filter-menu-box-header'>Sort by:</Box> */}
           <RadioPanel radioOptions={sortOptions} handleSort={handleSort}/>
-          {/* <form>
-            <fieldset>
-              <legend></legend>
-              {
-                sortOptions.map( (option, index) => {
-                  return (
-                    <Box key={index} component='div' className='filer-sort-options'>
-                      <label>{option}</label>
-                      <input type='radio' id={`radio-${index}`} name={option} value={option}/>
-                    </Box>
-                    
-                  );
-                })
-              }
-            </fieldset>
-          </form> */}
         </Box>
         <Box component='div' className='filter-menu-box'>
           <Box component='div' className='filter-menu-box-header'>Filters:</Box>
           <CheckboxPanel checkboxOptions={categoriesList} chooseCategoryFn={chooseCategory}/>
-          {/* {
-            categoriesList!.map( (category, index) => {
-              return (
-                <Box key={index} component='div' className='filer-sort-options'>
-                  <label>{category}</label>
-                  <input type='checkbox' onClick={(e) => chooseCategory(e, category)}/>
-                </Box>
-              );
-            })
-          } */}
         </Box> 
         </>
   }

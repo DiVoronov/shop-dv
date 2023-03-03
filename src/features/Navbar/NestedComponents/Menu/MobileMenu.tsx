@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Menu from "@mui/material/Menu";
 import IconButton from "@mui/material/IconButton";
 import Badge from "@mui/material/Badge";
@@ -18,7 +18,6 @@ export const MobileMenu = ( { anchorEl }: IAnchorEl ) => {
   const cart = useSelector( (state: RootState) => state.cart );
 
   const anchors: IOpenCloseAnchors = useSelector( (state: RootState) => state.openClose);
-  // const isMobileMenuOpen = Boolean(anchors.mobileMoreAnchorEl);
   const dispatch = useDispatch();
 
   const handleProfileMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
@@ -45,14 +44,6 @@ export const MobileMenu = ( { anchorEl }: IAnchorEl ) => {
       open={anchors.mobileMoreAnchorEl}
       onClose={handleMobileMenuClose}
     >
-      {/* <MenuItem>
-        <IconButton size="large" aria-label="show 4 new mails" color="inherit">
-          <Badge badgeContent={4} color="error">
-            <MailIcon />
-          </Badge>
-        </IconButton>
-        <p>Messages</p>
-      </MenuItem> */}
       <MenuItem>
         <IconButton
           size="large"

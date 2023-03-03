@@ -13,10 +13,6 @@ import './App.css';
 import { LoginPage } from './pages/LoginPage';
 import { RegistrationPage } from './pages/RegistrationPage';
 import './firebase';
-// import firebase from 'firebase/';
-
-// firebase.initializeApp(firebaseConfig);
-// console.log(process.env)
 
 function App() {
   return (

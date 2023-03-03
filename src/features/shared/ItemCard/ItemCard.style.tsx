@@ -3,7 +3,6 @@ import styled from 'styled-components';
 
 export const StyledItemCard = styled.div`
 margin: 1rem;
-/* padding: 2rem; */
 display: flex;
 flex-direction: column;
 justify-content: center;
@@ -71,7 +70,6 @@ animation: appear .2s ease-out;
 & .item-price-id-box {
     display: flex;
     width: 100%;
-    /* margin-top: 1rem; */
     justify-content: space-between;
     align-items: center;
     box-sizing: border-box;

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import { useDispatch, useSelector } from "react-redux";
@@ -12,7 +12,6 @@ export const menuId = "primary-search-account-menu";
 export const MenuComponent = ( { anchorEl }: IAnchorEl ) => {
 
   const anchors: IOpenCloseAnchors = useSelector( (state: RootState) => state.openClose);
-  // const isMenuOpen = Boolean(anchors.anchorEl);
   const dispatch = useDispatch();
 
   const handleMenuClose = () => {

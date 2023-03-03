@@ -26,33 +26,6 @@ export const Cart = () => {
     };
   }, [myStorage.length]);
 
-  // useEffect( () => {
-
-  //   for (let i = 0; i < myStorage.length; i++) {
-  //     const key = myStorage.key(i);
-  //     const newItem = myStorage.getItem(key!);
-      
-  //     if (newItem) {
-  //       const parseItem = JSON.parse(newItem);
-  //       const newArray = [ ...storageCart ];
-  //       newArray.push(parseItem);
-  //       setStorageCart(newArray);
-  //       console.log(newArray);
-  //       console.log(parseItem);
-  //     }
-
-      // const parseItem = () => typeof newItem === 'string' && JSON.parse(newItem);
-      // const itemFromLocalStorage = parseItem();
-      // const newArray = [ ...storageCart ];
-      // newArray.push(itemFromLocalStorage);
-      // setStorageCart(newArray);
-      // console.log(newArray);
-      // console.log(parseItem())
-
-  //   }
-  // }, [myStorage.length])
-
-
   return (
     <Box>
       {

@@ -1,6 +1,5 @@
 import React from "react";
 import { createSlice } from "@reduxjs/toolkit";
-import { IProductsObject } from "../api/shop.types";
 
 const openCloseFiltersSlice = createSlice({
   name: "openCloseFilters",

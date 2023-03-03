@@ -1,11 +1,6 @@
-import React, { useContext } from "react";
-import { Box } from "@mui/material";
-import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "../../../app/store";
+import React from "react";
 import { NavLink } from "react-router-dom";
 import { StyledListNavigation } from "./ListNavigation.style";
-import MenuItem from "@mui/material/MenuItem";
-
 
 interface IListNavigationElement {
   title: string

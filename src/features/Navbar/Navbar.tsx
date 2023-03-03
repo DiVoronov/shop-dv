@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import { Box } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../app/store";
@@ -15,28 +15,14 @@ import { Logo } from "./NestedComponents/Logo";
 import { MenuComponent, menuId } from "./NestedComponents/Menu/Menu";
 import { MobileMenu, mobileMenuId } from "./NestedComponents/Menu/MobileMenu";
 import { MobileNavList } from "./NestedComponents/Menu/MobileNavList";
-import { setAnchorEl, setMobileMoreAnchorEl, setMobileNavListAnchorEl, IOpenCloseAnchors } from "../../app/Slices/openCloseSlice";
+import { setAnchorEl, setMobileMoreAnchorEl, setMobileNavListAnchorEl } from "../../app/Slices/openCloseSlice";
 import { NavLink } from "react-router-dom";
-
-/*
- ***       <Logo/> 
- ***       <ListNavigation/>
- ***       <FindButton/>
- ***       <CartButton/>
- ***       <LogInOutButton/>
- ***       <OpenMenuButton/>
-*/
 
 export interface IAnchorEl {
   anchorEl: null | HTMLElement
 };
 
 export function Navbar() {
-
-  const myStorage = window.localStorage;
-  const storageCart= myStorage.getItem('initialState');
-  const parseCart = storageCart && JSON.parse(storageCart);
-  //storageCartLength
 
   const cart = useSelector( (state: RootState) => state.cart );
 
@@ -85,11 +71,6 @@ export function Navbar() {
           <Box sx={{ flexGrow: 1 }} aria-label="for flex" />
 
           <Box sx={{ display: { xs: "none", md: "flex" } }}>
-            {/* <IconButton size="large" aria-label="show 4 new mails" color="inherit">
-              <Badge badgeContent={4} color="error">
-                <MailIcon />
-              </Badge>
-            </IconButton> */}
 
             <IconButton
               size="large"
