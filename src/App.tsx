@@ -10,6 +10,13 @@ import { Jewelry } from "./pages/Jewelry";
 import { ErrorPage } from "./pages/ErrorPage";
 import { ItemsListAll } from './pages/ItemsListAll';
 import './App.css';
+import { LoginPage } from './pages/LoginPage';
+import { RegistrationPage } from './pages/RegistrationPage';
+import './firebase';
+// import firebase from 'firebase/';
+
+// firebase.initializeApp(firebaseConfig);
+// console.log(process.env)
 
 function App() {
   return (
@@ -23,6 +30,8 @@ function App() {
           <Route path="/clothing" element={<Clothing/>} />
           <Route path="/electronics" element={<Electronics/>} />
           <Route path="/jewelry" element={<Jewelry/>} />
+          <Route path="/login" element={<LoginPage/>} />
+          <Route path="/registration" element={<RegistrationPage/>} />
           <Route path="/*" element={<ErrorPage/>} />
         </Routes>
         <Footer/>

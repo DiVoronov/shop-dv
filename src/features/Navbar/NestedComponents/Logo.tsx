@@ -24,7 +24,7 @@ export const Logo = ( { displayParam }: IDisplayParam ) => {
         component="div"
         sx={{ display: {xs: displayParam.xs, md: displayParam.md} }}
       >
-        LOGO
+        DV-shop
       </Typography>
     </NavLink>
   );

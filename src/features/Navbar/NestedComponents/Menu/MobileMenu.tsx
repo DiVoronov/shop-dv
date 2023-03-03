@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../../../app/store";
 import { setAnchorEl, setMobileMoreAnchorEl, IOpenCloseAnchors } from "../../../../app/Slices/openCloseSlice";
 import { IAnchorEl } from "../../Navbar";
+import { NavLink } from "react-router-dom";
 
 export const mobileMenuId = "primary-search-account-menu-mobile";
 
@@ -57,10 +58,10 @@ export const MobileMenu = ( { anchorEl }: IAnchorEl ) => {
           color="inherit"
         >
           <Badge badgeContent={14} color="error">
-            <ShoppingCartIcon />
+            <NavLink to='/cart'><ShoppingCartIcon /></NavLink>
           </Badge>
         </IconButton>
-        <p>Cart</p>
+        <NavLink to='/cart' style={{textDecoration: 'none', color: 'inherit'}}><p>Cart</p></NavLink>
       </MenuItem>
       <MenuItem onClick={handleProfileMenuOpen}>
         <IconButton

@@ -4,6 +4,8 @@ import { Provider } from 'react-redux';
 import { store } from './app/store';
 import App from './App';
 import './index.css';
+// import { firebaseConfig } from './firebase.config';
+// import firebase from 'firebase';
 
 const container = document.getElementById('root')!;
 const root = createRoot(container);

@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../../../app/store";
 import { setAnchorEl, setMobileMoreAnchorEl, IOpenCloseAnchors } from "../../../../app/Slices/openCloseSlice";
 import { IAnchorEl } from "../../Navbar";
+import { NavLink } from "react-router-dom";
 
 export const menuId = "primary-search-account-menu";
 
@@ -36,7 +37,9 @@ export const MenuComponent = ( { anchorEl }: IAnchorEl ) => {
       onClose={handleMenuClose}
     >
       <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-      <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+      <MenuItem onClick={handleMenuClose}><NavLink to='/login' style={{textDecoration: 'none', color: 'inherit'}}>Login/Logout</NavLink></MenuItem>
+      <MenuItem onClick={handleMenuClose}><NavLink to='/registration' style={{textDecoration: 'none', color: 'inherit'}}>Registration</NavLink></MenuItem>
+
     </Menu>
   );
 };

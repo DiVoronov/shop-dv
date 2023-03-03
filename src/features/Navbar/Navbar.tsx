@@ -96,7 +96,7 @@ export function Navbar() {
               aria-label="show 17 new notifications"
               color="inherit"
             >
-              <Badge badgeContent={parseCart.length} color="error">
+              <Badge badgeContent={cart.length} color="error">
                 <NavLink to='/cart'><ShoppingCartIcon /></NavLink>
               </Badge>
             </IconButton>
