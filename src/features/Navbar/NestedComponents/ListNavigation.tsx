@@ -20,10 +20,10 @@ interface IPropsDir {
 export const ListNavigation = ( { propsDir }: IPropsDir ) => {
 
   const listNavigation: IListNavigationElement[] = [
-    {id: 1, title: "All Items", link: "/allItems"}, 
-    {id: 2, title: "Clothing", link: "/clothing"}, 
-    {id: 3, title: "Jewelry", link: "/jewelry"}, 
-    {id: 4, title: "Electronics", link: "/electronics"}
+    {id: 1, title: "Вся колекція", link: "/allItems"}, 
+    {id: 2, title: "Одяг", link: "/clothing"}, 
+    {id: 3, title: "Прикраси", link: "/jewelry"}, 
+    {id: 4, title: "Електроніка", link: "/electronics"}
   ];
 
   const theme = {

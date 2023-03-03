@@ -15,6 +15,8 @@ export const mobileMenuId = "primary-search-account-menu-mobile";
 
 export const MobileMenu = ( { anchorEl }: IAnchorEl ) => {
 
+  const cart = useSelector( (state: RootState) => state.cart );
+
   const anchors: IOpenCloseAnchors = useSelector( (state: RootState) => state.openClose);
   // const isMobileMenuOpen = Boolean(anchors.mobileMoreAnchorEl);
   const dispatch = useDispatch();
@@ -57,7 +59,7 @@ export const MobileMenu = ( { anchorEl }: IAnchorEl ) => {
           aria-label="show items in the cart"
           color="inherit"
         >
-          <Badge badgeContent={14} color="error">
+          <Badge badgeContent={cart.length} color="error">
             <NavLink to='/cart'><ShoppingCartIcon /></NavLink>
           </Badge>
         </IconButton>

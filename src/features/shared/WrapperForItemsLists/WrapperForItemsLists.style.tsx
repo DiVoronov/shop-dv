@@ -11,6 +11,13 @@ min-height: 100vh;
   min-width: 20%;
   box-sizing: border-box;
   padding: 1rem;
+
+  & .show-hide-sort-filter {
+    cursor: pointer;
+    border: 2px solid #d5d5d5;
+    padding: .5rem;
+    border-radius: 5px;
+  }
   
   & .filter-menu-box, .sort-menu-box {
   display: flex;

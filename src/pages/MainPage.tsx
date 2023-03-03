@@ -5,16 +5,10 @@ import { IProductsObject } from "../app/api/shop.types";
 import { useGetAllItemsQuery } from "../app/api/shop.api";
 import { setAllItems } from "../app/Slices/allItemsSlice";
 import { Box } from "@mui/material";
+import banner from './banner.png';
+import { NavLink } from "react-router-dom";
 
 export const MainPage = () => {
-
-  const [ item, setItem ] = useState({
-    title: 'test product',
-    price: 13.5,
-    description: 'lorem ipsum set',
-    image: 'https://i.pravatar.cc',
-    category: 'electronic'
-  })
 
   const { data, error, isLoading } = useGetAllItemsQuery("products");
   // const [ sendItem, resultOfSendItem ] = useSendItemElectronicsMutation();
@@ -38,7 +32,19 @@ export const MainPage = () => {
       component="div"
       sx={{width: "100%", minHeight: "80vh", background: '#f0f0f0'}}
     >
-      <span>I HERE MAIN PAGE</span>
+      <Box 
+        component="div" 
+        className="main-title"
+        sx={{
+          p: 5,
+        }}
+      >
+        ВІТАЄМО У НАШОМУ МАГАЗИНІ! 
+      </Box>
+
+      <NavLink to='/allItems'><img src={banner} width='100%' alt="banner"/></NavLink>
+      
+
 
       {/* <Banner/> */}
       {/* <Slider goodsList={clothing}/> */}

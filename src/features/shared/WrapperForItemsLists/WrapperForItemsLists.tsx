@@ -6,6 +6,9 @@ import { IProductsObject } from '../../../app/api/shop.types';
 import { RadioPanel } from './RadioPanel';
 import { CheckboxPanel } from './CheckBox';
 import { OrderBuyButton } from '../OrderBuyButton/OrderBuyButton';
+import { useSelector, useDispatch } from 'react-redux';
+import { RootState } from '../../../app/store';
+import { setOpenCloseFiltersStatus } from '../../../app/Slices/openCloseFiltersSlice';
 
 interface IWrapperForItemsListsProps {
   itemsList: IProductsObject[]
@@ -15,6 +18,9 @@ interface IWrapperForItemsListsProps {
 };
 
 export const WrapperForItemsLists: React.FC<IWrapperForItemsListsProps> = ({ itemsList, categories, sortPoints, role }) => {
+
+  const isSortFilterMenuOpen = useSelector( (state: RootState) => state.openCloseFilters );
+
 
   const [ itemsListForRendering, setItemsListForRendering ] = useState(itemsList);
   const [ categoriesList, setCategoriesList ] = useState<string[]>(['Show all']);
@@ -224,10 +230,24 @@ export const WrapperForItemsLists: React.FC<IWrapperForItemsListsProps> = ({ ite
   */
   };
 
+  const dispatch = useDispatch();
+  const showHideMenuFilters = () => {
+    dispatch(setOpenCloseFiltersStatus(!isSortFilterMenuOpen));
+  };
+
   return (
     <StyledWrapperForItemsLists>
       <Box component='div' className='sort-filter-menu-box'>
+        <Box component='div' className='show-hide-sort-filter' onClick={showHideMenuFilters} sx={{m: 3}}>
+          {
+            isSortFilterMenuOpen ? 'Приховати фільтри' : 'Показати фільтри'
+          }
+        </Box>
+        {
+          isSortFilterMenuOpen &&
+          <>
         <Box component='div' className='sort-menu-box'>
+
           {/* <Box component='div' className='filter-menu-box-header'>Sort by:</Box> */}
           <RadioPanel radioOptions={sortOptions} handleSort={handleSort}/>
           {/* <form>
@@ -261,7 +281,10 @@ export const WrapperForItemsLists: React.FC<IWrapperForItemsListsProps> = ({ ite
             })
           } */}
         </Box> 
+        </>
+  }
       </Box>
+      
       <Box component='div' className='items-list-menu-box'>
         {
           isShowAll

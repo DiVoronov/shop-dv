@@ -1,25 +1,22 @@
 import React from "react";
 import { Box } from "@mui/material";
-// import { useDispatch, useSelector } from "react-redux";
-// import { RootState } from "../../app/store";
 
 export const Footer = () => {
 
   return (
     <Box 
       component="div"
-      sx={{width: "100%", height: "3rem"}}
+      sx={{
+        height: "3rem", 
+        background: '#f0f0f0', 
+        borderTop: '2px solid #555', 
+        p: 3
+      }}
     >
-      <span>I HERE FOOTER</span>
       <Box component="div" sx={{display: "flex"}}>
-        {/* <FirstListLinks/> */}
-        {/* <SecondListLinksContacts/> */}
-        {/* <LanguageSwitch/> */}
+        Copyright © DV
       </Box>
-      <Box component="div" sx={{display: "flex"}}>
-        {/* <MediaList/> */}
-        {/* <Copyright/> */}
-      </Box>
+      
     </Box>
   );
 };
