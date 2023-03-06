@@ -6,6 +6,8 @@ import { OrderBuyButton } from '../OrderBuyButton/OrderBuyButton';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { useDispatch } from 'react-redux';
 import { removeFromCart } from '../../../app/Slices/cartSlice';
+import { NavLink } from 'react-router-dom';
+import { setCurrentDetailedPage } from '../../../app/Slices/currentDetailedItemSlice';
 
 interface IItemCardProps {
   item: IProductsObject
@@ -20,6 +22,10 @@ export const ItemCard: React.FC<IItemCardProps> = ({ item, role }) => {
     dispatch(removeFromCart(item.id));
   };
 
+  const handleCurrentDetailedPage = () => {
+    dispatch(setCurrentDetailedPage(item));
+  };
+
   return (
     <StyledItemCard>
       {
@@ -30,7 +36,9 @@ export const ItemCard: React.FC<IItemCardProps> = ({ item, role }) => {
         </Box>
       }
       <Box component='div' className='item-img'>
-        <img src={ item.image } alt={ item.title } width='99%'/>
+        <NavLink to={`/allItems/${item.id}`} onClick={handleCurrentDetailedPage}>
+          <img src={ item.image } alt={ item.title } width='99%'/>
+        </NavLink>
       </Box>
       <Box component='div' className='item-title'>{ item.title }</Box>
       <Box component='div' className='item-description'>{ item.description }</Box>

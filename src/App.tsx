@@ -13,6 +13,7 @@ import './App.css';
 import { LoginPage } from './pages/LoginPage';
 import { RegistrationPage } from './pages/RegistrationPage';
 import './firebase';
+import { DetailedCard } from './features/shared/DetailedCard/DetailedCard';
 
 function App() {
   return (
@@ -23,6 +24,8 @@ function App() {
           <Route path="/" element={<MainPage/>} />
           <Route path="/cart" element={<Cart/>} />
           <Route path="/allItems" element={<ItemsListAll/>} />
+          <Route path="/allItems/:id" element={<DetailedCard/>} />
+          
           <Route path="/clothing" element={<Clothing/>} />
           <Route path="/electronics" element={<Electronics/>} />
           <Route path="/jewelry" element={<Jewelry/>} />

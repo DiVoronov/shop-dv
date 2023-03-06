@@ -7,6 +7,7 @@ import { userReducer } from './Slices/userSlice';
 import { isLoginReducer } from './Slices/isLoginSlice';
 import { alertReducer } from './Slices/alertSlice';
 import { openCloseFiltersReducer } from './Slices/openCloseFiltersSlice';
+import { currentDetailedItemReducer } from './Slices/currentDetailedItemSlice';
 
 export const store = configureStore({
   reducer: {
@@ -17,6 +18,7 @@ export const store = configureStore({
     isLogin: isLoginReducer,
     alert: alertReducer,
     openCloseFilters: openCloseFiltersReducer,
+    currentDetailedItem: currentDetailedItemReducer,
     [shopApi.reducerPath]: shopApi.reducer,
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(shopApi.middleware),
