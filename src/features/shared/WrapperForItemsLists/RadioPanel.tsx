@@ -13,7 +13,7 @@ interface IRadioPanelProps {
 export const RadioPanel: React.FC<IRadioPanelProps> = ( { radioOptions, handleSort } ) => {
   return (
     <FormControl>
-      <FormLabel id="demo-radio-buttons-group-label">Sort by:</FormLabel>
+      <FormLabel id="demo-radio-buttons-group-label">Сортувати:</FormLabel>
       <RadioGroup
         aria-labelledby="demo-radio-buttons-group-label"
         name="radio-buttons-group"

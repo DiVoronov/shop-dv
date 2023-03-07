@@ -8,6 +8,7 @@ import { useDispatch } from 'react-redux';
 import { removeFromCart } from '../../../app/Slices/cartSlice';
 import { NavLink } from 'react-router-dom';
 import { setCurrentDetailedPage } from '../../../app/Slices/currentDetailedItemSlice';
+import { Loader } from '../Loader/Loader';
 
 interface IItemCardProps {
   item: IProductsObject
@@ -35,6 +36,7 @@ export const ItemCard: React.FC<IItemCardProps> = ({ item, role }) => {
           <Box><DeleteIcon/></Box>
         </Box>
       }
+      
       <Box component='div' className='item-img'>
         <NavLink to={`/allItems/${item.id}`} onClick={handleCurrentDetailedPage}>
           <img src={ item.image } alt={ item.title } width='99%'/>

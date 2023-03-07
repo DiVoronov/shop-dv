@@ -1,34 +1,39 @@
 import React, { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
-import { RootState } from '../../../app/store';
 import { StyledDetailedCard } from './DetailedCard.style';
 import { Box } from '@mui/material';
 import { NavLink } from 'react-router-dom';
 import { IProductsObject } from '../../../app/api/shop.types';
 import { BasicRating } from '../Rating/Rating';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import { useParams } from 'react-router-dom';
+import { useGetAllItemsQuery } from '../../../app/api/shop.api';
+import { Loader } from '../Loader/Loader';
 
 export const DetailedCard = () => {
 
-  const detailedStore: IProductsObject | null = useSelector( (state: RootState) => state.currentDetailedItem );
-  const allItems = useSelector( (state: RootState) => state.allItems );
+  const { id } = useParams();
 
-  const [ currentDetailedItem, setCurrentDetailedItem ] = useState<IProductsObject>(allItems[0]);
+  const { data, isLoading } = useGetAllItemsQuery("products");
+
+  const [ currentDetailedItem, setCurrentDetailedItem ] = useState<IProductsObject | undefined>(undefined);
 
   useEffect(() => {
-    detailedStore && setCurrentDetailedItem(detailedStore);
-  }, [detailedStore]);
+    const requiredItem = data && data.find( item => item.id.toString() === id );
+    requiredItem && setCurrentDetailedItem(requiredItem);
+  }, [data]);
 
   return ( 
     <StyledDetailedCard>
       <NavLink to='/allItems' className='button-back-detailed'>
-        {/* <Box component='button' className='button-back-detailed'> */}
           <ArrowBackIcon/>
           Повернутися до списку
-        {/* </Box> */}
       </NavLink>
       {
-        currentDetailedItem !== null
+        isLoading 
+        ?
+        <Loader/>
+        :
+        currentDetailedItem
         ?
         <Box component='div' className='current-item-card-detailed'>
           <Box component='div' className='item-img-detailed'>
@@ -52,9 +57,8 @@ export const DetailedCard = () => {
           
         </Box>
         :
-        <>Please, refresh the page</>
+        <Box component='a' href='/allItems'>Перезавантажте, будь-ласка, сторінку</Box>
       }
-
       
     </StyledDetailedCard>
   );

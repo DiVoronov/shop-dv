@@ -11,12 +11,10 @@ import { setOpenCloseFiltersStatus } from '../../../app/Slices/openCloseFiltersS
 
 interface IWrapperForItemsListsProps {
   itemsList: IProductsObject[]
-  categories?: any[]
-  sortPoints?: any[]
   role: 'shop' | 'cart'
 };
 
-export const WrapperForItemsLists: React.FC<IWrapperForItemsListsProps> = ({ itemsList, categories, sortPoints, role }) => {
+export const WrapperForItemsLists: React.FC<IWrapperForItemsListsProps> = ({ itemsList, role }) => {
 
   const isSortFilterMenuOpen = useSelector( (state: RootState) => state.openCloseFilters );
 
@@ -174,7 +172,7 @@ export const WrapperForItemsLists: React.FC<IWrapperForItemsListsProps> = ({ ite
           <RadioPanel radioOptions={sortOptions} handleSort={handleSort}/>
         </Box>
         <Box component='div' className='filter-menu-box'>
-          <Box component='div' className='filter-menu-box-header'>Filters:</Box>
+          <Box component='div' className='filter-menu-box-header'>Фільтри:</Box>
           <CheckboxPanel checkboxOptions={categoriesList} chooseCategoryFn={chooseCategory}/>
         </Box> 
         </>

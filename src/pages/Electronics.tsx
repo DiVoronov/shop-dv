@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useGetElectronicsQuery } from "../app/api/shop.api";
 import { WrapperForItemsLists } from "../features/shared/WrapperForItemsLists/WrapperForItemsLists";
 import { IProductsObject } from "../app/api/shop.types";
+import { Box, CircularProgress } from "@mui/material";
 
 export const Electronics = () => {
 
@@ -15,7 +16,13 @@ export const Electronics = () => {
 
   return (
     <>
-      <WrapperForItemsLists itemsList={electronics} role='shop'/>
+      {
+        isLoading
+        ?
+        <Box sx={{p: 5}}><CircularProgress /></Box>
+        :
+        <WrapperForItemsLists itemsList={electronics} role="shop"/>
+      }
     </>
   );
 };
