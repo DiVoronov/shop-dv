@@ -52,7 +52,7 @@ animation: appear .2s ease-out;
 
 & .item-title {
     color: #000;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     font-weight: 800;
     text-align: center;
     padding-bottom: 0px;
@@ -60,11 +60,12 @@ animation: appear .2s ease-out;
 
 & .item-description {
     color: #202020;
-    font-size: .9rem;
+    font-size: .8rem;
     font-weight: 500;
     text-align: justify;
     max-height: 135px;
     overflow: hidden;
+    hyphens: auto;
 }
 
 & .item-price-id-box {

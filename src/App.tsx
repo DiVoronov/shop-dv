@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { MainPage } from "./pages/MainPage";
 import { Navbar } from "./features/Navbar/Navbar";
 import { Footer } from "./features/Footer/Footer";
@@ -22,10 +22,10 @@ function App() {
         <Navbar/>
         <Routes>
           <Route path="/" element={<MainPage/>} />
+          <Route path="/main" element={<Navigate to='/' replace />} />
           <Route path="/cart" element={<Cart/>} />
           <Route path="/allItems" element={<ItemsListAll/>} />
           <Route path="/allItems/:id" element={<DetailedCard/>} />
-          
           <Route path="/clothing" element={<Clothing/>} />
           <Route path="/electronics" element={<Electronics/>} />
           <Route path="/jewelry" element={<Jewelry/>} />

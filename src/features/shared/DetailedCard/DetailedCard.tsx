@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom';
 import { IProductsObject } from '../../../app/api/shop.types';
 import { BasicRating } from '../Rating/Rating';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import { useParams } from 'react-router-dom';
+import { useParams, useLocation, useNavigate, useNavigation } from 'react-router-dom';
 import { useGetAllItemsQuery } from '../../../app/api/shop.api';
 import { Loader } from '../Loader/Loader';
 
@@ -21,6 +21,10 @@ export const DetailedCard = () => {
     const requiredItem = data && data.find( item => item.id.toString() === id );
     requiredItem && setCurrentDetailedItem(requiredItem);
   }, [data]);
+
+  // console.log(useLocation())
+  // console.log(useNavigate())
+  // console.log(useNavigation())
 
   return ( 
     <StyledDetailedCard>

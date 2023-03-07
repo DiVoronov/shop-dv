@@ -8,6 +8,9 @@ import { CheckboxPanel } from './CheckBox';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../../../app/store';
 import { setOpenCloseFiltersStatus } from '../../../app/Slices/openCloseFiltersSlice';
+import { NavLink } from 'react-router-dom';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import { useParams, useLocation, useNavigate, useNavigation } from 'react-router-dom';
 
 interface IWrapperForItemsListsProps {
   itemsList: IProductsObject[]
@@ -156,8 +159,17 @@ export const WrapperForItemsLists: React.FC<IWrapperForItemsListsProps> = ({ ite
     dispatch(setOpenCloseFiltersStatus(!isSortFilterMenuOpen));
   };
 
+  const navigate = useNavigate();
+  const goBack = () => navigate(-1);
+
   return (
     <StyledWrapperForItemsLists>
+      <Box component='div' className='button-back' onClick={goBack}>
+          {/* <Box component='div' className='button-arrow'> */}
+            <ArrowBackIcon/>
+          {/* </Box> */}
+          <Box component='div' className='button-back-text'>Повернутися назад</Box>
+      </Box>
       <Box component='div' className='sort-filter-menu-box'>
         <Box component='div' className='show-hide-sort-filter' onClick={showHideMenuFilters} sx={{m: 3}}>
           {
