@@ -25,6 +25,18 @@ export interface IAnchorEl {
 export function Navbar() {
 
   const cart = useSelector( (state: RootState) => state.cart );
+  const myStorage = window.localStorage;
+  const cartFromLocaleStorage = myStorage.getItem('initialState');
+
+  const countOfItems = () => {
+    if (cart.length !== 0) {
+      return cart.length;
+    } else if (cartFromLocaleStorage !== null) {
+      return JSON.parse(cartFromLocaleStorage).length
+    } else {
+      return 0;
+    }
+  };
 
   const dispatch = useDispatch();
 
@@ -53,7 +65,7 @@ export function Navbar() {
           <IconButton
             size="large"
             edge="start"
-            color="inherit"
+            color="error"
             aria-label="open drawer"
             sx={{ ml: {xs: "none", md: 2}, display: {xs: "flex", md: "none"} }}
             onClick={handleMobileNavListOpen}
@@ -75,10 +87,10 @@ export function Navbar() {
             <IconButton
               size="large"
               aria-label="show 17 new notifications"
-              color="inherit"
+              color="error"
             >
-              <Badge badgeContent={cart.length} color="error">
-                <NavLink to='/cart'><ShoppingCartIcon /></NavLink>
+              <Badge badgeContent={countOfItems()} color="error">
+                <NavLink to='/cart'><ShoppingCartIcon color='action'/></NavLink>
               </Badge>
             </IconButton>
             <IconButton
@@ -88,7 +100,7 @@ export function Navbar() {
               aria-controls={menuId}
               aria-haspopup="true"
               onClick={handleProfileMenuOpen}
-              color="inherit"
+              color="default"
             >
               <AccountCircle />
             </IconButton>
@@ -100,7 +112,7 @@ export function Navbar() {
               aria-controls={mobileMenuId}
               aria-haspopup="true"
               onClick={handleMobileMenuOpen}
-              color="inherit"
+              color="error"
             >
               <MoreIcon />
             </IconButton>

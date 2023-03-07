@@ -13,7 +13,7 @@ interface IRadioPanelProps {
 export const RadioPanel: React.FC<IRadioPanelProps> = ( { radioOptions, handleSort } ) => {
   return (
     <FormControl>
-      <FormLabel id="demo-radio-buttons-group-label">Сортувати:</FormLabel>
+      <FormLabel id="demo-radio-buttons-group-label" sx={{m: 1}}>Сортувати:</FormLabel>
       <RadioGroup
         aria-labelledby="demo-radio-buttons-group-label"
         name="radio-buttons-group"
@@ -21,7 +21,24 @@ export const RadioPanel: React.FC<IRadioPanelProps> = ( { radioOptions, handleSo
         {
           radioOptions.map( (option, index) => {
             return (
-              <FormControlLabel key={index} value={option} control={<Radio onClick={(e) => handleSort(e, option)}/>} label={option}/>
+              <FormControlLabel 
+              key={index} 
+              value={option} 
+              sx={{ 
+                fontSize: '10px',
+                mr: 1, ml: 1, mt: .5,
+                ['& > span']: {
+                  fontSize: '.8rem',
+                  textAlign: 'left',
+                }
+              }}
+              control={
+                <Radio 
+                  onClick={(e) => handleSort(e, option)} 
+                  color='error'
+                />
+              } 
+              label={option}/>
             );
           })
         }

@@ -16,6 +16,18 @@ export const mobileMenuId = "primary-search-account-menu-mobile";
 export const MobileMenu = ( { anchorEl }: IAnchorEl ) => {
 
   const cart = useSelector( (state: RootState) => state.cart );
+  const myStorage = window.localStorage;
+  const cartFromLocaleStorage = myStorage.getItem('initialState');
+
+  const countOfItems = () => {
+    if (cart.length !== 0) {
+      return cart.length;
+    } else if (cartFromLocaleStorage !== null) {
+      return JSON.parse(cartFromLocaleStorage).length
+    } else {
+      return 0;
+    }
+  };
 
   const anchors: IOpenCloseAnchors = useSelector( (state: RootState) => state.openClose);
   const dispatch = useDispatch();
@@ -50,8 +62,8 @@ export const MobileMenu = ( { anchorEl }: IAnchorEl ) => {
           aria-label="show items in the cart"
           color="inherit"
         >
-          <Badge badgeContent={cart.length} color="error">
-            <NavLink to='/cart'><ShoppingCartIcon /></NavLink>
+          <Badge badgeContent={countOfItems()} color="error">
+            <NavLink to='/cart'><ShoppingCartIcon color="action" /></NavLink>
           </Badge>
         </IconButton>
         <NavLink to='/cart' style={{textDecoration: 'none', color: 'inherit'}}><p>Cart</p></NavLink>
@@ -62,7 +74,7 @@ export const MobileMenu = ( { anchorEl }: IAnchorEl ) => {
           aria-label="account of current user"
           aria-controls="primary-search-account-menu"
           aria-haspopup="true"
-          color="inherit"
+          color="default"
         >
           <AccountCircle />
         </IconButton>

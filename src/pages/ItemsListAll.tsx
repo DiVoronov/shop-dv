@@ -19,8 +19,6 @@ export const ItemsListAll = () => {
 
   const allItems = useSelector( (state: RootState) => state.allItems);
 
-  console.log(isLoading)
-
   return (
     <Box
       component="div"

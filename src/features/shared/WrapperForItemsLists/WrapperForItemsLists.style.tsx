@@ -14,7 +14,7 @@ min-height: 100vh;
   gap: .6rem;
   border-bottom: 2px solid #5f5f5f2e;
   box-shadow: 1px 1px 4px #888;
-  background: #e3f5f6;
+  background: #f0f0f0;
   cursor: pointer;
   text-decoration: none;
   color: #050505;
@@ -22,12 +22,16 @@ min-height: 100vh;
   font-size: .9rem;
   box-sizing: border-box;
   & .button-back-text {
-    transform: rotate(90deg);
+    display: none;
+  }
+  & .button-back-empty {
+    display: flex;
+    width: 15px;
   }
   & svg {
     position: fixed;
-    top: 74px;
-    left: 10px;
+    top: 50%;
+    left: 5px;
   }
 }
 
@@ -43,29 +47,35 @@ min-height: 100vh;
     border: 2px solid #d5d5d5;
     padding: .5rem;
     border-radius: 5px;
-  }
-  
-  & .filter-menu-box, .sort-menu-box {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-content: center;
-  align-items: center;
-  gap: .4rem;
-  padding: .1rem;
-  margin-bottom: 2rem;
-  
-  & .filter-menu-box-header {
-    margin-bottom: 1rem;
+    background: #f0f0f0;
   }
 
-  & .filer-sort-options {
+  & .sort-filter-menu-inner-box {
     display: flex;
-    flex-direction: row-reverse;
-    justify-content: left;
-    gap: 1rem;
-    width: 100%;
-  }
+    flex-direction: column;
+
+    & .filter-menu-box, .sort-menu-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    gap: .4rem;
+    padding: .1rem;
+    margin-bottom: 2rem;
+    
+      & .filter-menu-box-header {
+        margin-bottom: 1rem;
+      }
+
+      & .filer-sort-options {
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: left;
+        gap: 1rem;
+        width: 100%;
+      }
+    }
   }
 
 }
@@ -90,27 +100,33 @@ min-height: 100vh;
     justify-content: center;
     align-content: center;
     align-items: center;
-    padding: .6rem;
-    gap: .6rem;
-    border-bottom: 2px solid #5f5f5f2e;
-    box-shadow: 1px 1px 4px #888;
-    background: #e3f5f6;
-    cursor: pointer;
-    text-decoration: none;
-    color: #050505;
     width: 100%;
     box-sizing: border-box;
 
     & .button-back-text {
-      transform: rotate(0deg);
+      display: flex;
+    }
+    & .button-back-empty {
+      display: none;
     }
     & svg {
       position: inherit;
+      transition: transform .6s, opacity .6s;
+      &:hover {
+        opacity: 1;
+        cursor: pointer;
+        transform: scale(1.1);
+      }
     }
   }
   &  .sort-filter-menu-box {
     border-right: none;
     border-bottom: 2px solid #d5d5d5;
+    & .sort-filter-menu-inner-box {
+      flex-direction: row;
+      justify-content: center;
+      gap: 2rem;
+    }
   }
 }
 `;

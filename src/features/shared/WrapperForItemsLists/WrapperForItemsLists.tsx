@@ -11,6 +11,7 @@ import { setOpenCloseFiltersStatus } from '../../../app/Slices/openCloseFiltersS
 import { NavLink } from 'react-router-dom';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { useParams, useLocation, useNavigate, useNavigation } from 'react-router-dom';
+import { Scroll } from '../Scroll/Scroll';
 
 interface IWrapperForItemsListsProps {
   itemsList: IProductsObject[]
@@ -33,7 +34,6 @@ export const WrapperForItemsLists: React.FC<IWrapperForItemsListsProps> = ({ ite
         const newArray = categoriesList;
         newArray.push(item.category);
         setCategoriesList(newArray);
-        console.log(categoriesList)
       };
     });
 
@@ -114,7 +114,7 @@ export const WrapperForItemsLists: React.FC<IWrapperForItemsListsProps> = ({ ite
     if (a.price < b.price) { return -1 } else return 0;
   };
   const sortByPriceDecrease = (a: IProductsObject, b: IProductsObject) => {
-    if (a.price < b.price) { console.log(a.price, b.price); return 1 } else
+    if (a.price < b.price) { return 1 } else
     if (a.price > b.price) { return -1 } else return 0;
   };
   const sortByPopular = (a: IProductsObject, b: IProductsObject) => {
@@ -132,7 +132,6 @@ export const WrapperForItemsLists: React.FC<IWrapperForItemsListsProps> = ({ ite
 
     if (radioOptions === 'Від меншої ціни') {
       const arrayPriceIncreaseSort = itemsListForRenderingCopy.sort(sortByPriceIncrease);
-      console.log(temporaryListOfItems);
       const arrayPriceIncreaseSortTEMP = temporaryListOfItemsCopy.sort(sortByPriceIncrease);
       setItemsListForRendering(arrayPriceIncreaseSort);
       setTemporaryListOfItems(arrayPriceIncreaseSortTEMP);
@@ -165,30 +164,27 @@ export const WrapperForItemsLists: React.FC<IWrapperForItemsListsProps> = ({ ite
   return (
     <StyledWrapperForItemsLists>
       <Box component='div' className='button-back' onClick={goBack}>
-          {/* <Box component='div' className='button-arrow'> */}
-            <ArrowBackIcon/>
-          {/* </Box> */}
+          <ArrowBackIcon/>
           <Box component='div' className='button-back-text'>Повернутися назад</Box>
+          <Box component='div' className='button-back-empty'></Box>
       </Box>
       <Box component='div' className='sort-filter-menu-box'>
-        <Box component='div' className='show-hide-sort-filter' onClick={showHideMenuFilters} sx={{m: 3}}>
+        <Box component='div' className='show-hide-sort-filter' onClick={showHideMenuFilters} sx={{mt: 3, mb: 3}}>
           {
             isSortFilterMenuOpen ? 'Приховати фільтри' : 'Показати фільтри'
           }
         </Box>
         {
           isSortFilterMenuOpen &&
-          <>
-        <Box component='div' className='sort-menu-box'>
-
-          <RadioPanel radioOptions={sortOptions} handleSort={handleSort}/>
-        </Box>
-        <Box component='div' className='filter-menu-box'>
-          <Box component='div' className='filter-menu-box-header'>Фільтри:</Box>
-          <CheckboxPanel checkboxOptions={categoriesList} chooseCategoryFn={chooseCategory}/>
-        </Box> 
-        </>
-  }
+          <Box component='div' className='sort-filter-menu-inner-box'>
+            <Box component='div' className='sort-menu-box'>
+              <RadioPanel radioOptions={sortOptions} handleSort={handleSort}/>
+            </Box>
+            <Box component='div' className='filter-menu-box'>
+              <CheckboxPanel checkboxOptions={categoriesList} chooseCategoryFn={chooseCategory}/>
+            </Box> 
+          </Box>
+        }
       </Box>
       
       <Box component='div' className='items-list-menu-box'>
@@ -216,7 +212,7 @@ export const WrapperForItemsLists: React.FC<IWrapperForItemsListsProps> = ({ ite
           </>
         }
       </Box>
-      
+      <Scroll/>
     </StyledWrapperForItemsLists>
   );
 };

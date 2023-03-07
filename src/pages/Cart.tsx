@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../app/store';
 import { WrapperForItemsLists } from '../features/shared/WrapperForItemsLists/WrapperForItemsLists';
 import { IProductsObject } from '../app/api/shop.types';
 import { Box } from '@mui/material';
 import { Alert } from '../features/shared/Alert/Alert';
+import { updateCart } from '../app/Slices/cartSlice';
 
 export const Cart = () => {
 
@@ -13,15 +14,17 @@ export const Cart = () => {
   const isAlert = useSelector( (state: RootState) => state.alert);
 
   const myStorage = window.localStorage;
+  const dispatch = useDispatch();
 
   const [ storageCart, setStorageCart ] = useState<IProductsObject[]>([]);
-  console.log(storageCart);
+
   useEffect( () => {
     if (cart.length === 0) {
       const cartFromLocaleStorage = myStorage.getItem('initialState');
       if (cartFromLocaleStorage !== null) {
         const parseItems = JSON.parse(cartFromLocaleStorage);
         setStorageCart(parseItems);
+        dispatch(updateCart(parseItems));
       };
     };
   }, [myStorage.length]);

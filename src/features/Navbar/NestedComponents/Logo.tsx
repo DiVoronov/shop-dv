@@ -17,12 +17,12 @@ interface IDisplayParam {
 export const Logo = ( { displayParam }: IDisplayParam ) => {
 
   return (
-    <NavLink to="/" style={{textDecoration: "none", }}>
+    <NavLink to="/" style={{textDecoration: "none" }}>
       <Typography
         variant="h6"
         noWrap
         component="div"
-        sx={{ display: {xs: displayParam.xs, md: displayParam.md} }}
+        sx={{ display: {xs: displayParam.xs, md: displayParam.md}, color: '#050505', background: '#fff', padding: '5px 10px', borderRadius: '10px' }}
       >
         DV-shop
       </Typography>
