@@ -17,12 +17,17 @@ import { MobileMenu, mobileMenuId } from "./NestedComponents/Menu/MobileMenu";
 import { MobileNavList } from "./NestedComponents/Menu/MobileNavList";
 import { setAnchorEl, setMobileMoreAnchorEl, setMobileNavListAnchorEl } from "../../app/Slices/openCloseSlice";
 import { NavLink } from "react-router-dom";
+import { StyledNavbar } from "./Navbar.style";
 
 export interface IAnchorEl {
   anchorEl: null | HTMLElement
 };
 
-export function Navbar() {
+interface INavbarProps {
+  position: string
+};
+
+export const Navbar: React.FC<INavbarProps> = ({ position }) => {
 
   const cart = useSelector( (state: RootState) => state.cart );
   const myStorage = window.localStorage;
@@ -56,9 +61,14 @@ export function Navbar() {
     setMobileMoreAnchorElSerializable(event.currentTarget);
     dispatch(setMobileMoreAnchorEl(true));
   };
+  
+  const themeNavbar = {
+    position,
+  };
 
   return (
-    <Box sx={{ flexGrow: 1, borderBottom: '2px solid #555'}}>
+    // <Box sx={{ flexGrow: 1, borderBottom: '2px solid #555', position: position}}>
+    <StyledNavbar theme={themeNavbar}>
       <AppBar position="static" sx={{background: '#f0f0f0'}}>
         <Toolbar>
           <Logo displayParam={{xs: "none", md: "flex"}} />
@@ -90,7 +100,7 @@ export function Navbar() {
               color="error"
             >
               <Badge badgeContent={countOfItems()} color="error">
-                <NavLink to='/cart'><ShoppingCartIcon color='action'/></NavLink>
+                <NavLink to='/cart'><ShoppingCartIcon color='action' sx={{display: 'flex'}}/></NavLink>
               </Badge>
             </IconButton>
             <IconButton
@@ -124,6 +134,6 @@ export function Navbar() {
       <MobileMenu anchorEl={mobileMoreAnchorElSerializable} />
       <MobileNavList anchorEl={mobileNavListAnchorElSerializable} />
 
-    </Box>
+    </StyledNavbar>
   );
 };

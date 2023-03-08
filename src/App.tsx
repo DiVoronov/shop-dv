@@ -1,7 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { MainPage } from "./pages/MainPage";
-import { Navbar } from "./features/Navbar/Navbar";
 import { Footer } from "./features/Footer/Footer";
 import { Cart } from "./pages/Cart";
 import { Clothing } from "./pages/Clothing";
@@ -14,12 +13,16 @@ import { LoginPage } from './pages/LoginPage';
 import { RegistrationPage } from './pages/RegistrationPage';
 import './firebase';
 import { DetailedCard } from './features/shared/DetailedCard/DetailedCard';
+import { ParallaxNavbar } from './features/Navbar/ParallaxNavbar/ParallaxNavbar';
+
+
 
 function App() {
+
   return (
     <div className="App">
       <BrowserRouter basename={process.env.PUBLIC_URL}>
-        <Navbar/>
+        <ParallaxNavbar/>
         <Routes>
           <Route path="/" element={<MainPage/>} />
           <Route path="/main" element={<Navigate to='/' replace />} />

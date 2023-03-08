@@ -66,6 +66,7 @@ animation: appear .2s ease-out;
     max-height: 135px;
     overflow: hidden;
     hyphens: auto;
+    overflow-wrap: anywhere;
 }
 
 & .item-price-id-box {

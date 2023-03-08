@@ -63,7 +63,7 @@ export const MobileMenu = ( { anchorEl }: IAnchorEl ) => {
           color="inherit"
         >
           <Badge badgeContent={countOfItems()} color="error">
-            <NavLink to='/cart'><ShoppingCartIcon color="action" /></NavLink>
+            <NavLink to='/cart'><ShoppingCartIcon color="action" sx={{display: 'flex'}}/></NavLink>
           </Badge>
         </IconButton>
         <NavLink to='/cart' style={{textDecoration: 'none', color: 'inherit'}}><p>Cart</p></NavLink>

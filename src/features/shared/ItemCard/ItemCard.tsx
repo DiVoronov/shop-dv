@@ -27,6 +27,16 @@ export const ItemCard: React.FC<IItemCardProps> = ({ item, role }) => {
     dispatch(setCurrentDetailedPage(item));
   };
 
+  const appropriatedDescription = () => {
+    const complicatedWords = [];
+    item.description.split(' ').map( (word, index) => {
+      word.match('/') && complicatedWords.push({index, word});
+    });
+    
+    item.description.split(' ').forEach( (word, index) => index === index )
+    const correctDescription = '';
+  };
+
   return (
     <StyledItemCard>
       {
