@@ -48,10 +48,14 @@ export const ItemCard: React.FC<IItemCardProps> = ({ item, role }) => {
       
       <Box component='div' className='item-img'>
         <NavLink to={`/allItems/${item.id}`} onClick={handleCurrentDetailedPage}>
-          <img src={ item.image } alt={ item.title } width='99%'/>
+          <img src={ item.image } alt={ item.title } width='100%'/>
         </NavLink>
       </Box>
-      <Box component='div' className='item-title'>{ item.title }</Box>
+      <Box component='div' className='item-title'>
+        <NavLink to={`/allItems/${item.id}`} onClick={handleCurrentDetailedPage}>   
+          { item.title }
+        </NavLink>
+      </Box>
       <Box component='div' className='item-description'>{ item.description }</Box>
       <Box component='div' className='item-price-id-box'>
         <Box component='div' className='item-price'>

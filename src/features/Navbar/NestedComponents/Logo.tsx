@@ -22,7 +22,16 @@ export const Logo = ( { displayParam }: IDisplayParam ) => {
         variant="h6"
         noWrap
         component="div"
-        sx={{ display: {xs: displayParam.xs, md: displayParam.md}, color: '#050505', background: '#fff', padding: '5px 10px', borderRadius: '10px' }}
+        sx={{ 
+          display: {xs: displayParam.xs, md: displayParam.md}, 
+          color: '#fff', 
+          background: '#000', 
+          padding: '5px 10px', 
+          borderRadius: '10px',
+          fontSize: '1rem',
+          transition: 'background .2s, color .2s',
+          ['&:hover']: {background: '#fff', color: '#000'}
+        }}
       >
         DV-shop
       </Typography>

@@ -10,6 +10,21 @@ interface ICheckboxPanelProps {
 };
 
 export const CheckboxPanel: React.FC<ICheckboxPanelProps> = ({ checkboxOptions, chooseCategoryFn }) => {
+  
+  const translateCategory = (category: string) => {
+    if (category === "women's clothing") {
+      return 'Жіночий одяг';
+    } else if (category === "men's clothing") {
+      return 'Чоловічий одяг';
+    } else if (category === 'jewelery') {
+      return 'Прикраси';
+    } else if (category === 'electronics') {
+      return 'Електроніка';
+    } else if (category === 'Show all') {
+      return 'Показати все';
+    };
+  };
+
   return (
     <FormGroup>
       <FormLabel id="demo-radio-buttons-group-label" sx={{m: 1}}>Фільтри:</FormLabel>
@@ -27,7 +42,7 @@ export const CheckboxPanel: React.FC<ICheckboxPanelProps> = ({ checkboxOptions, 
                 }
               }}
               control={<Checkbox onClick={(e) => chooseCategoryFn(e, category)} color='error' size='small'/>} 
-              label={category} 
+              label={translateCategory(category)} 
             />
           );
             })

@@ -13,7 +13,7 @@ width: 100%;
 flex-wrap: wrap;
 min-height: 100vh;
 transition: transform .1s ease-in-out;
-background: #f5f5f5;
+background: #fff;
 overflow: hidden;
 box-sizing: border-box;
 animation: appear .2s ease-out;
@@ -25,12 +25,16 @@ animation: appear .2s ease-out;
     align-items: center;
     padding: .6rem;
     gap: .6rem;
-    border-bottom: 2px solid #5f5f5f2e;
-    box-shadow: 1px 1px 4px #888;
-    background: #e3f5f6;
+    border-bottom: 1px solid #5f5f5f2e;
+    /* box-shadow: 1px 1px 4px #888; */
+    background: #f0f0f0;
     cursor: pointer;
     text-decoration: none;
     color: #050505;
+    transition: background .2s;
+    &:hover {
+        background: #f5f5f5;
+    }
 }
 
 & .current-item-card-detailed {
@@ -56,8 +60,10 @@ animation: appear .2s ease-out;
     }
 
     & .current-item-card-title-description-detailed {
-
+        display: flex;
+        flex-direction: column;
         width: 65%;
+        gap: 1rem;
 
         & .item-title-detailed, .item-description-detailed, .item-price-id-box-detailed {
             padding: 1rem;

@@ -23,10 +23,10 @@ export const MainPage = () => {
       component="div"
       sx={{width: "100%",  background: '#fff', overflow: 'hidden'}}
     >
-      <Box component='img' src={bannerName} width='100%' alt="banner"></Box>
+      <Box component='img' src={bannerName} width='100%' alt="banner" sx={{opacity: '.1'}}></Box>
 
       <NavLink to='/allItems' ><img src={banner} width='100%' alt="banner" /></NavLink>
-      <Box component='img' src={bannerName} width='100%' alt="banner"></Box>
+      <Box component='img' src={bannerName} width='100%' alt="banner" sx={{opacity: '.1'}}></Box>
 
       <AdvertBanner 
         background='rgba(255, 111, 87, 0.5)' 
@@ -35,7 +35,7 @@ export const MainPage = () => {
         textTitle='ПІДПИШИСЬ НА РОЗСИЛКУ ТА ОТРИМАЙ ЗНИЖКУ -10%!'
         textButton='ПІДПИСАТИСЯ'
       />
-      <Box component='img' src={bannerName} width='100%' alt="banner"></Box>
+      <Box component='img' src={bannerName} width='100%' alt="banner" sx={{opacity: '.1'}}></Box>
 
     </Box>
   );

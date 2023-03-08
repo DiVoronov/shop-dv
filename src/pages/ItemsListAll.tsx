@@ -22,7 +22,7 @@ export const ItemsListAll = () => {
   return (
     <Box
       component="div"
-      sx={{width: "100%", minHeight: "80vh", background: '#f0f0f0'}}
+      sx={{width: "100%", minHeight: "80vh", background: '#fff'}}
     >
       {
         isLoading

@@ -12,7 +12,7 @@ min-height: 100vh;
   align-items: center; */
   padding: .6rem;
   gap: .6rem;
-  border-bottom: 2px solid #5f5f5f2e;
+  /* border-bottom: 2px solid #5f5f5f2e; */
   box-shadow: 1px 1px 4px #888;
   background: #f0f0f0;
   cursor: pointer;
@@ -21,6 +21,10 @@ min-height: 100vh;
   width: 5%;
   font-size: .9rem;
   box-sizing: border-box;
+  transition: background .2s;
+  &:hover {
+    background: #f5f5f5;
+  }
   & .button-back-text {
     display: none;
   }
@@ -36,18 +40,24 @@ min-height: 100vh;
 }
 
 &  .sort-filter-menu-box {
-  background: #e5e5e5;
-  border-right: 2px solid #d5d5d5;
+  background: #fff;
+  border-right: 1px solid #d5d5d5;
   min-width: 20%;
   box-sizing: border-box;
   padding: 1rem;
 
   & .show-hide-sort-filter {
     cursor: pointer;
-    border: 2px solid #d5d5d5;
+    border: 2px solid #000;
     padding: .5rem;
     border-radius: 5px;
-    background: #f0f0f0;
+    background: #fff;
+    color: #000;
+    transition: background .2s, color .2s;
+    &:hover {
+      background: #000;
+      color: #fff;
+    }
   }
 
   & .sort-filter-menu-inner-box {
@@ -86,9 +96,9 @@ min-height: 100vh;
   justify-content: center;
   align-content: center;
   align-items: center;
-  gap: 1rem;
+  /* gap: 1rem; */
   flex-wrap: wrap;
-  
+  box-sizing: border-box;
 }
 
 
@@ -102,6 +112,10 @@ min-height: 100vh;
     align-items: center;
     width: 100%;
     box-sizing: border-box;
+    transition: background .2s;
+    &:hover {
+      background: #fff;
+    }
 
     & .button-back-text {
       display: flex;
@@ -121,7 +135,7 @@ min-height: 100vh;
   }
   &  .sort-filter-menu-box {
     border-right: none;
-    border-bottom: 2px solid #d5d5d5;
+    border-bottom: 1px solid #d5d5d5;
     & .sort-filter-menu-inner-box {
       flex-direction: row;
       justify-content: center;

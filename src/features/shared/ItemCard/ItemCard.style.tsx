@@ -2,18 +2,18 @@ import React from 'react';
 import styled from 'styled-components';
 
 export const StyledItemCard = styled.div`
-margin: 1rem;
+/* margin: 1rem; */
 display: flex;
 flex-direction: column;
-justify-content: center;
-align-content: center;
+/* justify-content: center; */
+/* align-content: center; */
 align-items: center;
-gap: .5rem;
-width: 40%;
+/* gap: .5rem; */
+/* width: 40%; */
 flex-wrap: wrap;
-border: 2px solid #5f5f5f2e;
-border-radius: 10px;
-box-shadow: 1px 1px 10px #888;
+border: 1px solid #5f5f5f2e;
+/* border-radius: 10px; */
+/* box-shadow: 1px 1px 10px #888; */
 transition: transform .1s ease-in-out;
 max-height: 600px;
 overflow: hidden;
@@ -21,22 +21,39 @@ box-sizing: border-box;
 flex-wrap: nowrap;
 animation: appear .2s ease-out;
 
+width: 45%;
+height: 700px;
+justify-content: space-between;
+flex-wrap: wrap;
+
+
 &:hover {
-    transform: scale(1.04);
+    /* transform: scale(1.04); */
 }
 
 & .item-img {
-    
+    width: 100%;
+    height: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     & img {
         border-radius: 10px;
         max-height: 300px;
         overflow: hidden;
+        transition: transform .2s;
+        &:hover {
+            transform: scale(1.01);
+        }
     }
 }
 
 
 & .item-title, .item-description, .item-price-id-box {
     padding: 1rem;
+    box-sizing: border-box;
+    max-height: 100px;
+    overflow: hidden;
 }
 
 & .item-title {
@@ -45,6 +62,10 @@ animation: appear .2s ease-out;
     font-weight: 800;
     text-align: center;
     padding-bottom: 0px;
+    & a {
+        text-decoration: none;
+        color: #000;
+    }
 }
 
 & .item-description {
@@ -81,11 +102,11 @@ animation: appear .2s ease-out;
 }
 
 @media screen and (max-width: 650px) {
-    width: 90%;
+    width: 95%;
 }
 
 @media screen and (min-width: 1100px) {
-    width: 25%;
+    width: 32%;
 }
 
 @keyframes appear {

@@ -13,7 +13,7 @@ flex-direction: ${ props => props.theme.flexDirection };
   color: ${ props => props.theme.font};
   transition: transform .2s, background .2s, color .2s;
   padding: .5rem;
-  border-radius: 10px;
+  border-radius: 5px;
   width: max-content;
 
   &:hover {

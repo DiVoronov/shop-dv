@@ -68,7 +68,7 @@ export const Navbar: React.FC<INavbarProps> = ({ position }) => {
 
   return (
     <StyledNavbar theme={themeNavbar}>
-      <AppBar position="static" sx={{background: '#f0f0f0'}}>
+      <AppBar position="static" sx={{background: '#fff'}}>
         <Toolbar>
           <Logo displayParam={{xs: "none", md: "flex"}} />
           <IconButton
