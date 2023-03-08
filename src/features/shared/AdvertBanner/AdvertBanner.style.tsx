@@ -6,12 +6,12 @@ display: flex;
 width: 100%;
 justify-content: center;
 align-items: center;
-margin: 1rem 0px;
+/* margin: 1rem 0px; */
 padding: 2rem;
 gap: 4rem;
 flex-wrap: wrap;
 background: ${ props => props.theme.background };
-margin: 4rem 0px;
+/* margin: 4rem 0px; */
 
 & .adv-banner-text {
   display: flex;

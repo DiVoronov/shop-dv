@@ -8,7 +8,8 @@ import { useDispatch } from 'react-redux';
 import { removeFromCart } from '../../../app/Slices/cartSlice';
 import { NavLink } from 'react-router-dom';
 import { setCurrentDetailedPage } from '../../../app/Slices/currentDetailedItemSlice';
-import { Loader } from '../Loader/Loader';
+import { DeleteButton } from './DeleteButton/DeleteButton';
+// import { Loader } from '../Loader/Loader';
 
 interface IItemCardProps {
   item: IProductsObject
@@ -27,24 +28,22 @@ export const ItemCard: React.FC<IItemCardProps> = ({ item, role }) => {
     dispatch(setCurrentDetailedPage(item));
   };
 
-  const appropriatedDescription = () => {
-    const complicatedWords = [];
-    item.description.split(' ').map( (word, index) => {
-      word.match('/') && complicatedWords.push({index, word});
-    });
+  // const appropriatedDescription = () => {
+  //   const complicatedWords = [];
+  //   item.description.split(' ').map( (word, index) => {
+  //     word.match('/') && complicatedWords.push({index, word});
+  //   });
     
-    item.description.split(' ').forEach( (word, index) => index === index )
-    const correctDescription = '';
-  };
+  //   item.description.split(' ').forEach( (word, index) => index === index )
+  //   const correctDescription = '';
+  // };
 
   return (
     <StyledItemCard>
       {
         role === 'cart'
         &&
-        <Box component='div' className='item-delete' onClick={handleDeleteItem}>
-          <Box><DeleteIcon/></Box>
-        </Box>
+        <DeleteButton item={item}/>
       }
       
       <Box component='div' className='item-img'>

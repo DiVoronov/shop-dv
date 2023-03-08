@@ -14,14 +14,14 @@ import { RegistrationPage } from './pages/RegistrationPage';
 import './firebase';
 import { DetailedCard } from './features/shared/DetailedCard/DetailedCard';
 import { ParallaxNavbar } from './features/Navbar/ParallaxNavbar/ParallaxNavbar';
-
-
+import { Ticker } from './features/Ticker/Ticker';
 
 function App() {
 
   return (
     <div className="App">
       <BrowserRouter basename={process.env.PUBLIC_URL}>
+        <Ticker/>
         <ParallaxNavbar/>
         <Routes>
           <Route path="/" element={<MainPage/>} />

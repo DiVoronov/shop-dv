@@ -10,10 +10,10 @@ import Badge from "@mui/material/Badge";
 import MenuIcon from "@mui/icons-material/Menu";
 import AccountCircle from "@mui/icons-material/AccountCircle";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import MoreIcon from "@mui/icons-material/MoreVert";
+// import MoreIcon from "@mui/icons-material/MoreVert";
 import { Logo } from "./NestedComponents/Logo";
 import { MenuComponent, menuId } from "./NestedComponents/Menu/Menu";
-import { MobileMenu, mobileMenuId } from "./NestedComponents/Menu/MobileMenu";
+// import { MobileMenu, mobileMenuId } from "./NestedComponents/Menu/MobileMenu";
 import { MobileNavList } from "./NestedComponents/Menu/MobileNavList";
 import { setAnchorEl, setMobileMoreAnchorEl, setMobileNavListAnchorEl } from "../../app/Slices/openCloseSlice";
 import { NavLink } from "react-router-dom";
@@ -46,7 +46,7 @@ export const Navbar: React.FC<INavbarProps> = ({ position }) => {
   const dispatch = useDispatch();
 
   const [anchorElSerializable, setAnchorElSerializable] = useState<null | HTMLElement>(null);
-  const [mobileMoreAnchorElSerializable, setMobileMoreAnchorElSerializable] = useState<null | HTMLElement>(null);
+  // const [mobileMoreAnchorElSerializable, setMobileMoreAnchorElSerializable] = useState<null | HTMLElement>(null);
   const [mobileNavListAnchorElSerializable, setMobileNavListAnchorElSerializable] = useState<null | HTMLElement>(null);
 
   const handleProfileMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
@@ -57,17 +57,16 @@ export const Navbar: React.FC<INavbarProps> = ({ position }) => {
     setMobileNavListAnchorElSerializable(event.currentTarget);
     dispatch(setMobileNavListAnchorEl(true));
   };
-  const handleMobileMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
-    setMobileMoreAnchorElSerializable(event.currentTarget);
-    dispatch(setMobileMoreAnchorEl(true));
-  };
+  // const handleMobileMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
+  //   setMobileMoreAnchorElSerializable(event.currentTarget);
+  //   dispatch(setMobileMoreAnchorEl(true));
+  // };
   
   const themeNavbar = {
     position,
   };
 
   return (
-    // <Box sx={{ flexGrow: 1, borderBottom: '2px solid #555', position: position}}>
     <StyledNavbar theme={themeNavbar}>
       <AppBar position="static" sx={{background: '#f0f0f0'}}>
         <Toolbar>
@@ -92,8 +91,8 @@ export const Navbar: React.FC<INavbarProps> = ({ position }) => {
           
           <Box sx={{ flexGrow: 1 }} aria-label="for flex" />
 
-          <Box sx={{ display: { xs: "none", md: "flex" } }}>
-
+          {/* <Box sx={{ display: { xs: "none", md: "flex" } }}> */}
+          <Box sx={{ display: "flex" }}>
             <IconButton
               size="large"
               aria-label="show 17 new notifications"
@@ -115,7 +114,8 @@ export const Navbar: React.FC<INavbarProps> = ({ position }) => {
               <AccountCircle />
             </IconButton>
           </Box>
-          <Box sx={{ display: { xs: "flex", md: "none" } }}>
+          {/* <Box sx={{ display: { xs: "flex", md: "none" } }}> */}
+          {/* <Box sx={{ display: 'none' }}>
             <IconButton
               size="large"
               aria-label="show more"
@@ -126,12 +126,12 @@ export const Navbar: React.FC<INavbarProps> = ({ position }) => {
             >
               <MoreIcon />
             </IconButton>
-          </Box>
+          </Box> */}
         </Toolbar>
       </AppBar>
 
       <MenuComponent anchorEl={anchorElSerializable} />
-      <MobileMenu anchorEl={mobileMoreAnchorElSerializable} />
+      {/* <MobileMenu anchorEl={mobileMoreAnchorElSerializable} /> */}
       <MobileNavList anchorEl={mobileNavListAnchorElSerializable} />
 
     </StyledNavbar>

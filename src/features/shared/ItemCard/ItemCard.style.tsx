@@ -21,17 +21,6 @@ box-sizing: border-box;
 flex-wrap: nowrap;
 animation: appear .2s ease-out;
 
-& .item-delete {
-    position: relative;
-    width: 24%;
-    cursor: pointer;
-    & > div {
-        position: absolute;
-        top: 5px;
-        right: -150%;
-    }
-}
-
 &:hover {
     transform: scale(1.04);
 }

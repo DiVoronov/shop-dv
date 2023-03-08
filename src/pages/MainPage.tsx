@@ -4,12 +4,13 @@ import { useGetAllItemsQuery } from "../app/api/shop.api";
 import { setAllItems } from "../app/Slices/allItemsSlice";
 import { Box } from "@mui/material";
 import banner from './bannerMini.png';
+import bannerName from './bannerNameTwo.png';
 import { NavLink } from "react-router-dom";
 import { AdvertBanner } from "../features/shared/AdvertBanner/AdvertBanner";
 
 export const MainPage = () => {
 
-  const { data, error, isLoading } = useGetAllItemsQuery("products");
+  const { data } = useGetAllItemsQuery("products");
 
   const dispatch = useDispatch();
 
@@ -20,21 +21,12 @@ export const MainPage = () => {
   return (
     <Box
       component="div"
-      sx={{width: "100%",  background: '#fff'}}
+      sx={{width: "100%",  background: '#fff', overflow: 'hidden'}}
     >
-      <Box 
-        component="div" 
-        className="main-title"
-        sx={{
-          p: 5, mb: 5, mt: 5, 
-          borderBottom: '2px solid rgba(255, 111, 87, 0.5)', 
-          borderTop: '2px solid rgba(255, 111, 87, 0.5)',
-        }}
-      >
-        ВІТАЄМО У НАШОМУ МАГАЗИНІ! 
-      </Box>
+      <Box component='img' src={bannerName} width='100%' alt="banner"></Box>
 
-      <NavLink to='/allItems' ><img src={banner} width='100%' alt="banner" style={{marginBottom: '3rem'}}/></NavLink>
+      <NavLink to='/allItems' ><img src={banner} width='100%' alt="banner" /></NavLink>
+      <Box component='img' src={bannerName} width='100%' alt="banner"></Box>
 
       <AdvertBanner 
         background='rgba(255, 111, 87, 0.5)' 
@@ -43,6 +35,8 @@ export const MainPage = () => {
         textTitle='ПІДПИШИСЬ НА РОЗСИЛКУ ТА ОТРИМАЙ ЗНИЖКУ -10%!'
         textButton='ПІДПИСАТИСЯ'
       />
+      <Box component='img' src={bannerName} width='100%' alt="banner"></Box>
+
     </Box>
   );
 };

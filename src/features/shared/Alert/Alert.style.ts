@@ -10,7 +10,7 @@ align-content: space-between;
 align-items: center;
 gap: 1rem;
 padding: .2rem;
-top: 50px;
+top: 80px;
 right: 0px;
 width: 300px;
 height: max-content;

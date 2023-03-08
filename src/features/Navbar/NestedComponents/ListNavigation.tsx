@@ -29,7 +29,7 @@ export const ListNavigation = ( { propsDir }: IPropsDir ) => {
   return (
     <StyledListNavigation theme={theme}>
       { listNavigation.map( (element: IListNavigationElement) => {
-        return(
+        return (
           <NavLink to={element.link} key={element.id}>{element.title}</NavLink>
         )
       }) }
