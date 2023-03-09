@@ -1,12 +1,12 @@
 import React from 'react';
-import { Box } from '@mui/material';
+import { Alert, Box } from '@mui/material';
 import { StyledAlert } from './Alert.style';
 
 interface IAlert {
   isLogin: boolean
 };
 
-export const Alert: React.FC<IAlert> = ({ isLogin }) => {
+export const CustomAlert: React.FC<IAlert> = ({ isLogin }) => {
 
   const theme = {
     background: isLogin ? '#d3f3dd' : '#f2c8c8',
@@ -15,7 +15,14 @@ export const Alert: React.FC<IAlert> = ({ isLogin }) => {
   
   return (
     <StyledAlert theme={theme}>
-      <Box component='div' className='alert-title'>
+
+      <Alert severity={isLogin ? 'success' : 'error'}>
+        {
+          isLogin ? 'Ви щойно придбали товар' : 'Для того, щоб придбати товар, необхідно авторизуватися!'
+        }
+      </Alert>
+
+      {/* <Box component='div' className='alert-title'>
         {
           isLogin ? 'Вітаю!' : 'Увага!'
         }
@@ -24,7 +31,7 @@ export const Alert: React.FC<IAlert> = ({ isLogin }) => {
         {
           isLogin ? 'Ви щойно придбали товар' : 'Для того, щоб придбати товар, необхідно авторизуватися!'
         }
-      </Box>
+      </Box> */}
     </StyledAlert>
   );
 };

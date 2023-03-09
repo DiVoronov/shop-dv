@@ -7,6 +7,7 @@ import { InputsLoginRegistration } from "../features/shared/InputsLoginRegistrat
 
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { app } from "../firebase";
+import { WrapperUserPages } from "../features/shared/WrapperUserPages/WrapperUserPages";
 
 export const RegistrationPage = () => {
 
@@ -31,11 +32,8 @@ export const RegistrationPage = () => {
   };
 
   return (
-    <Box
-      component="div"
-      sx={{width: "100%", background: '#f0f0f0'}}
-    >
+    <WrapperUserPages>
       <InputsLoginRegistration role='registration' firebaseFunction={handleRegistration}/>
-    </Box>
+    </WrapperUserPages>
   );
 };

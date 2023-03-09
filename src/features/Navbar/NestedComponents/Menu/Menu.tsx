@@ -35,9 +35,21 @@ export const MenuComponent = ( { anchorEl }: IAnchorEl ) => {
       open={anchors.anchorEl}
       onClose={handleMenuClose}
     >
-      <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-      <MenuItem onClick={handleMenuClose}><NavLink to='/login' style={{textDecoration: 'none', color: 'inherit'}}>Login/Logout</NavLink></MenuItem>
-      <MenuItem onClick={handleMenuClose}><NavLink to='/registration' style={{textDecoration: 'none', color: 'inherit'}}>Registration</NavLink></MenuItem>
+      <NavLink to='/profile' style={{textDecoration: 'none', color: 'inherit'}}>
+        <MenuItem onClick={handleMenuClose}>
+          Profile
+        </MenuItem>
+      </NavLink>
+      <NavLink to='/login' style={{textDecoration: 'none', color: 'inherit'}}>
+        <MenuItem onClick={handleMenuClose}>
+          Login/Logout
+        </MenuItem>
+      </NavLink>
+      <NavLink to='/registration' style={{textDecoration: 'none', color: 'inherit'}}>
+        <MenuItem onClick={handleMenuClose}>
+          Registration
+        </MenuItem>
+      </NavLink>
 
     </Menu>
   );

@@ -33,19 +33,52 @@ export const InputsLoginRegistration: React.FC<IItemCardProps> = ({ role, fireba
   const [ email, setEmail ] = useState('');
   const [ password, setPassword ] = useState('');
 
+  const [ errorHandler, setErrorHandler ] = useState({
+    email: false,
+    password: false,
+  });
+
   const handleEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
     const currentEmail = e.currentTarget.value;
+    setErrorHandler({ ...errorHandler, email: false});
     // currentEmail.match(/\w*@\w*.\w*/gmi)
     setEmail(currentEmail);
   };
 
   const handlePassword = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setErrorHandler({ ...errorHandler, password: false});
     const currentPassword = e.currentTarget.value;
     setPassword(currentPassword);
   };
 
   const handleSendInputsInformation = () => {
-    firebaseFunction && firebaseFunction(email, password);
+
+    if ((password.length >= 6) && (email.match(/^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$/gmi))) {
+      firebaseFunction && firebaseFunction(email, password);
+      console.log('все верно');
+    } else if ((email.match(/^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$/gmi)) && (password.length < 6)) {
+      setErrorHandler({ ...errorHandler, password: true});
+      console.log('не верній пароль');
+
+    } else if ((password.length >= 6) && (!email.match(/^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$/gmi))) {
+      console.log('не верній емейл');
+
+      setErrorHandler({ ...errorHandler, email: true});
+    } else {
+      console.log('все не верно');
+      setErrorHandler({ email: true, password: true});
+    }
+
+    // if ((password.length < 6) && (!email.match(/\w*@\w*\.\w*/gmi))) {
+    //   setErrorHandler({ ...errorHandler, password: true});
+    //   setErrorHandler({ ...errorHandler, email: true});
+    // } else if (password.length < 6) {
+    //   setErrorHandler({ ...errorHandler, password: true});
+    // } else if (!email.match(/\w*@\w*\.\w*/gmi)) {
+    //   setErrorHandler({ ...errorHandler, email: true});
+    // } else {
+    //   firebaseFunction && firebaseFunction(email, password);
+    // };
   };
 
   return (
@@ -69,7 +102,11 @@ export const InputsLoginRegistration: React.FC<IItemCardProps> = ({ role, fireba
             variant="outlined" 
             onChange={handleEmail}
             value={email}
+            color={ errorHandler.email ? 'error' : 'primary' }
           />
+          <Box component='div' className='inputs-error-message'>
+            { errorHandler.email ? 'Некоректний E-mail' : '' }
+          </Box>
 
           <FormControl sx={{ m: 1, width: '25ch' }} variant="outlined">
             <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
@@ -78,6 +115,7 @@ export const InputsLoginRegistration: React.FC<IItemCardProps> = ({ role, fireba
               type={showPassword ? 'text' : 'password'}
               value={password}
               onChange={handlePassword}
+              color={ errorHandler.password ? 'error' : 'primary' }
               endAdornment={
                 <InputAdornment position="end">
                   <IconButton
@@ -93,6 +131,10 @@ export const InputsLoginRegistration: React.FC<IItemCardProps> = ({ role, fireba
               label="Password"
             />
           </FormControl>
+          <Box component='div' className='inputs-error-message'>
+            { errorHandler.password ? 'Пароль повинен складатися як мінімум з шести символів' : '' }
+          </Box>
+
         </Box>
         <Box component='div' className='inputs-button-send'>
           <Stack spacing={2} direction="row">

@@ -1,34 +1,45 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../app/store";
-import { useGetAllItemsQuery } from "../app/api/shop.api";
-import { setAllItems } from "../app/Slices/allItemsSlice";
+// import { useGetAllItemsQuery } from "../app/api/shop.api";
+// import { setAllItems } from "../app/Slices/allItemsSlice";
 import { Box, Button } from "@mui/material";
 import { InputsLoginRegistration } from "../features/shared/InputsLoginRegistration/InputsLoginRegistration";
 
 import { getAuth, signOut, signInWithEmailAndPassword } from "firebase/auth";
 import { setLoginStatus } from "../app/Slices/isLoginSlice";
+import { WrapperUserPages } from "../features/shared/WrapperUserPages/WrapperUserPages";
+import { updateUserInfo } from "../app/Slices/userInfoProfileSlice";
 
 export const LoginPage = () => {
 
-  const { data, error, isLoading } = useGetAllItemsQuery("products");
+  // const { data, error, isLoading } = useGetAllItemsQuery("products");
 
   const dispatch = useDispatch();
+  const myStorage = window.localStorage;
 
-  useEffect( () => {
-    data && dispatch(setAllItems(data));
-  }, [data]);
+  // useEffect( () => {
+  //   data && dispatch(setAllItems(data));
+  // }, [data]);
 
   const isLogin = useSelector( (state: RootState) => state.isLogin);
 
   const handleLoginFirebase = (email: string, password: string) => {
+
     const auth = getAuth();
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
+        const informationAboutUser = {
+          email: userCredential.user.email,
+          creationTime: userCredential.user.metadata.creationTime,
+          lastSignInTime: userCredential.user.metadata.lastSignInTime,
+        };
+        dispatch(updateUserInfo(informationAboutUser));
+        myStorage.setItem('userLogIn', JSON.stringify(informationAboutUser));
         dispatch(setLoginStatus(true));
       })
       .catch((error) => {
-        console.log(error)
+        console.log(error);
       });
   };
 
@@ -37,25 +48,26 @@ export const LoginPage = () => {
     signOut(auth).then(() => {
       console.log('Success')
       dispatch(setLoginStatus(false));
-
+      myStorage.setItem('userLogIn', 'NO');
     }).catch((error) => {
       console.log(error)
     });
   };
 
   return (
-    <Box
-      component="div"
-      sx={{width: "100%", background: '#f0f0f0'}}
-    >
+    <WrapperUserPages>
       {
         !isLogin 
         ?
         <InputsLoginRegistration role='login' firebaseFunction={handleLoginFirebase}/>
         :
-        <Button onClick={handleLogoutFirebase}>Вийти</Button>
+        <Box sx={{margin: 5}}>
+          <Box sx={{margin: 5}}>Ви вже увійшли до акаунту</Box>
+          <Button onClick={handleLogoutFirebase} sx={{}}>Вийти</Button>
+        </Box>
+        
       }
 
-    </Box>
+    </WrapperUserPages>
   );
 };

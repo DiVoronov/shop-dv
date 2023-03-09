@@ -21,11 +21,11 @@ export const MainPage = () => {
   return (
     <Box
       component="div"
-      sx={{width: "100%",  background: '#fff', overflow: 'hidden'}}
+      sx={{width: "100%",  background: '#fff', overflow: 'hidden', display: 'flex', flexDirection: 'column'}}
     >
       <Box component='img' src={bannerName} width='100%' alt="banner" sx={{opacity: '.1'}}></Box>
 
-      <NavLink to='/allItems' ><img src={banner} width='100%' alt="banner" /></NavLink>
+      <NavLink to='/allItems' style={{display: 'flex'}}><img src={banner} width='100%' alt="banner" /></NavLink>
       <Box component='img' src={bannerName} width='100%' alt="banner" sx={{opacity: '.1'}}></Box>
 
       <AdvertBanner 

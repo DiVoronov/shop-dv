@@ -4,7 +4,7 @@ import { RootState } from '../app/store';
 import { WrapperForItemsLists } from '../features/shared/WrapperForItemsLists/WrapperForItemsLists';
 import { IProductsObject } from '../app/api/shop.types';
 import { Box } from '@mui/material';
-import { Alert } from '../features/shared/Alert/Alert';
+import { CustomAlert } from '../features/shared/Alert/Alert';
 import { updateCart } from '../app/Slices/cartSlice';
 
 export const Cart = () => {
@@ -32,10 +32,10 @@ export const Cart = () => {
   return (
     <Box>
       {
-        isLogin && isAlert && <Alert isLogin={isLogin}/>
+        isLogin && isAlert && <CustomAlert isLogin={isLogin}/>
       }
       {
-        !isLogin && isAlert && <Alert isLogin={isLogin}/>
+        !isLogin && isAlert && <CustomAlert isLogin={isLogin}/>
       }
       <Box>
         {

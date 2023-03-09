@@ -95,7 +95,7 @@ export const Navbar: React.FC<INavbarProps> = ({ position }) => {
           <Box sx={{ display: "flex" }}>
             <IconButton
               size="large"
-              aria-label="show 17 new notifications"
+              aria-label="show new notifications"
               color="error"
             >
               <Badge badgeContent={countOfItems()} color="error">

@@ -2,12 +2,12 @@ import React from 'react';
 import styled from 'styled-components';
 
 export const StyledInputsLoginRegistration = styled.div`
-margin: auto;
+/* margin: auto;
 min-height: 100vh;
-padding: 3rem;
+padding: 3rem; */
 display: flex;
 justify-content: center;
-background: #f0f0f0;
+/* background: #f0f0f0; */
 
 & .main-inputs-box {
     margin: 1rem;
@@ -23,7 +23,7 @@ background: #f0f0f0;
     flex-wrap: wrap;
     border: 2px solid #5f5f5f2e;
     border-radius: 10px;
-    box-shadow: 5px 5px 10px #888;
+    box-shadow: 5px 5px 10px #aaa;
     transition: transform .1s ease-in-out;
     max-height: 600px;
     overflow: hidden;
@@ -37,6 +37,17 @@ background: #f0f0f0;
         align-items: center;
         width: 100%;
         justify-content: space-between;
+
+        & .inputs-error-message {
+            color: red;
+            font-size: .7rem;
+            width: 25ch;
+        }
+        /* & .MuiOutlinedInput-colorSecondary {
+            color: pink;
+        } */
+
+
     }
 
     & .inputs-link-to-reg-auth > a {
