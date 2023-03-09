@@ -48,7 +48,7 @@ export const ItemCard: React.FC<IItemCardProps> = ({ item, role }) => {
       
       <Box component='div' className='item-img'>
         <NavLink to={`/allItems/${item.id}`} onClick={handleCurrentDetailedPage}>
-          <img src={ item.image } alt={ item.title } width='100%'/>
+          <img src={ item.image } alt={ item.title }/>
         </NavLink>
       </Box>
       <Box component='div' className='item-title'>

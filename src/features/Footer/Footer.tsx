@@ -8,12 +8,12 @@ export const Footer = () => {
       component="div"
       sx={{
         height: "3rem", 
-        background: '#f0f0f0', 
+        background: '#fff', 
         borderTop: '2px solid #555', 
         p: 3
       }}
     >
-      <Box component="div" sx={{display: "flex"}}>
+      <Box component="div" sx={{display: "flex", mb: 4}}>
         Copyright © DV
       </Box>
       
