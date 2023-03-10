@@ -1,10 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 
-export const StyledItemCard = styled.div`
+export const StyledItemCardCarousel = styled.div`
 /* margin: 1rem; */
 display: flex;
-flex-direction: column;
+/* flex-direction: column; */
 /* justify-content: center; */
 /* align-content: center; */
 align-items: center;
@@ -20,34 +20,37 @@ overflow: hidden;
 box-sizing: border-box;
 flex-wrap: nowrap;
 animation: appear .2s ease-out;
-padding-top: 10px;
-width: 45%;
+
+width: 100%;
+margin: 2rem;
+padding: 0rem 2rem;
 height: 700px;
 justify-content: space-between;
 flex-wrap: wrap;
-margin-bottom: .5rem;
+background: #fff;
+
 
 &:hover {
     /* transform: scale(1.04); */
 }
 
-& .item-img {
-    width: 100%;
-    height: 250px;
+& .item-carousel-img-block {
     display: flex;
-    align-items: center;
-    justify-content: center;
-
-    & img {
-        border-radius: 10px;
-        max-height: 250px;
-        max-width: 250px;
-        overflow: hidden;
-        transition: transform .2s;
-        /* object-fit: cover; */
-
-        &:hover {
-            transform: scale(1.01);
+    flex-wrap: wrap;
+    & .item-img {
+        width: 100%;
+        height: 200px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        & img {
+            border-radius: 10px;
+            max-height: 200px;
+            overflow: hidden;
+            transition: transform .2s;
+            &:hover {
+                transform: scale(1.01);
+            }
         }
     }
 }
@@ -105,13 +108,13 @@ margin-bottom: .5rem;
     }
 }
 
-@media screen and (max-width: 650px) {
+/* @media screen and (max-width: 650px) {
     width: 95%;
 }
 
 @media screen and (min-width: 1100px) {
     width: 32%;
-}
+} */
 
 @keyframes appear {
     from {

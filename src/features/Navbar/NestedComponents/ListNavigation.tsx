@@ -1,6 +1,8 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import { StyledListNavigation } from "./ListNavigation.style";
+import { setMobileNavListAnchorEl } from "../../../app/Slices/openCloseSlice";
+import { useDispatch } from "react-redux";
 
 interface IListNavigationElement {
   title: string
@@ -10,6 +12,7 @@ interface IListNavigationElement {
 
 interface IPropsDir {
   propsDir: string
+
 }
 
 export const ListNavigation = ( { propsDir }: IPropsDir ) => {
@@ -26,8 +29,14 @@ export const ListNavigation = ( { propsDir }: IPropsDir ) => {
     flexDirection: propsDir,
   };
 
+  const dispatch = useDispatch();
+
+  const handleCloseMobileNavListAnchorEl = () => {
+    dispatch(setMobileNavListAnchorEl(false));
+  };
+  
   return (
-    <StyledListNavigation theme={theme}>
+    <StyledListNavigation theme={theme} onClick={handleCloseMobileNavListAnchorEl}>
       { listNavigation.map( (element: IListNavigationElement) => {
         return (
           <NavLink to={element.link} key={element.id}>{element.title}</NavLink>

@@ -5,7 +5,7 @@ export const StyledListNavigation = styled.div`
 display: flex;
 flex-direction: ${ props => props.theme.flexDirection };
 & a {
-  font-size: 1.3rem;
+  font-size: 1rem;
   font-weight: 900;
   letter-spacing: 1px;
   margin: 1rem;
