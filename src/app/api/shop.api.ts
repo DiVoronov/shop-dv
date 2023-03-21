@@ -24,7 +24,6 @@ export const shopApi = createApi({
     getElectronics: builder.query<IProductsObject[], string>({
       query: () => `/products/category/electronics`
     }),
-
   })
 });
 

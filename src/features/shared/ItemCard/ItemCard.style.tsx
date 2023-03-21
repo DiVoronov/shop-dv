@@ -44,7 +44,7 @@ margin-bottom: .5rem;
         max-width: 250px;
         overflow: hidden;
         transition: transform .2s;
-        /* object-fit: cover; */
+        object-fit: cover;
 
         &:hover {
             transform: scale(1.01);

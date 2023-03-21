@@ -4,43 +4,39 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import { useGetAllItemsQuery } from '../../app/api/shop.api';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { setAllItems } from '../../app/Slices/allItemsSlice';
-import { ItemCardCarousel } from '../shared/ItemCardCarousel/ItemCardCarousel';
-import { Box } from '@mui/material';
-import bannerName from '../../pages/bannerNameTwo.png';
 import { StyledSlider } from './Slider.style';
 import { Slide } from './Slide';
-
-const CustomButton = () => {
-  return (
-    <button
-    className={''}
-    style={{ display: "flex", background: "red" }}
-    onClick={()=> {}}
-    >NEXT</button>
-  )
-}
+import { RootState } from '../../app/store';
+import { responseAPI } from '../../env';
+import { setNoResponse } from '../../app/Slices/noResponseSlice';
 
 export const CustomSlider = () => {
   
-  const { data } = useGetAllItemsQuery("products");
+  const { data, isLoading, isError } = useGetAllItemsQuery("products");
 
   const [ windowWidth, setWindowWidth ] = useState(0);
 
   const dispatch = useDispatch();
 
+  const noResponse = useSelector((state: RootState) => state.noResponse);
+  const allItems = useSelector( (state: RootState) => state.allItems);
+
+  useEffect(() => {
+    noResponse && dispatch(setAllItems(responseAPI.allItems));
+  }, [noResponse]);
+  
   useEffect( () => {
     data && dispatch(setAllItems(data));
+    setTimeout( () => {
+      if (isLoading || isError) {
+        dispatch(setAllItems(responseAPI.allItems));
+        dispatch(setNoResponse(true));
+      };
+    }, 3000);
   }, [data]);
 
-  // useEffect( () => {
-  //   // setWindowWidth(window.innerWidth);
-  //   console.log(window.screen.width);
-  //   console.log(window.innerWidth);
-  //   // document.querySelector()
-
-  // }, [window.screen.width, window.innerWidth]);
   function handleResize() {
     window.innerWidth && setWindowWidth(window.innerWidth);
   };
@@ -48,9 +44,6 @@ export const CustomSlider = () => {
   useEffect( () => {
     window.innerWidth && setWindowWidth(window.innerWidth);
   }, []);
-  // useEffect( () => {
-  //   console.log(windowWidth);
-  // }, [windowWidth]);
   
   window.addEventListener('resize', handleResize);
 
@@ -71,43 +64,34 @@ export const CustomSlider = () => {
   const settings = {
     dots: windowWidth < 380 ? false : true,
     className: "center",
-    // centerMode: true,
     infinite: true,
     speed: 500,
-    // slidesToShow: 1,
     slidesToScroll: 1,
     
     centerPadding: "60px",
     slidesToShow: slidesToShow(),
-    // nextArrow: <CustomButton/>,
-    // prevArrow: <CustomButton/>,
+
   };
 
-  const renderHitItems = data ? [data[0], data[5], data[2], data[3], data[11], data[1], data[19], data[7]  ] : [];
+  const renderHitItems = (data && !noResponse) 
+    ? [data[0], data[5], data[2], data[3], data[11], data[1], data[19], data[7] ] 
+    : [allItems[0], allItems[5], allItems[2], allItems[3], allItems[11], allItems[1], allItems[19], allItems[17] ];
 
   return (
     <>
-      {
-        data
-        &&
-        <>
-        <StyledSlider>
-          <Slider {...settings}>
-            {
-              renderHitItems.length > 0 
-              &&
-              renderHitItems.map( (item, index) => {
-                return (
-                  <Slide key={index} index={index} item={item}/>
-                )
-              })
-            }
-            </Slider>
-          </StyledSlider>
-        </>
-      }
+      <StyledSlider>
+        <Slider {...settings}>
+          {
+            renderHitItems.length > 0 
+            &&
+            renderHitItems.map( (item, index) => {
+              return (
+                <Slide key={index} index={index} item={item}/>
+              )
+            })
+          }
+          </Slider>
+        </StyledSlider>
     </>
   );
 };
-
-{/* <ItemCard key={index} item={item} role={role}/> */}

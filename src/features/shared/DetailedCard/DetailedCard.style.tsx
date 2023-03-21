@@ -51,11 +51,21 @@ animation: appear .2s ease-out;
 
     & .item-img-detailed {
         max-width: 30%;
+        /* width: 100%; */
+        height: 250px;
+        object-fit: contain;
+        /* width: 250px; 
+        height: 200px;  */
         
         & img {
             border-radius: 10px;
-            max-height: 300px;
+            height: 250px;
             overflow: hidden;
+            max-width: 250px;
+            object-fit: contain;
+
+            /* width: 250px; */
+
         }
     }
 
@@ -114,7 +124,7 @@ animation: appear .2s ease-out;
 
     & .current-item-card-detailed {
         & .item-img-detailed {
-            max-width: 95%;
+            max-width: 100%;
         }
         & .current-item-card-title-description-detailed {
             width: 100%;
